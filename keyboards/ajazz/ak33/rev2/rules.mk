@@ -58,6 +58,9 @@ WAIT_FOR_USB = no
 CUSTOM_MATRIX = yes
 KEYBOARD_SHARED_EP = yes
 
+RAW_ENABLE = yes
+OPENRGB_ENABLE=yes
+
 # Custom RGB matrix handling
 RGB_MATRIX_ENABLE = yes
 RGB_MATRIX_DRIVER = custom
