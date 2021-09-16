@@ -39,13 +39,13 @@
 
 #define TAPPING_TERM 200
 
-/* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
-#define LOCKING_SUPPORT_ENABLE
-/* Locking resynchronize hack */
-#define LOCKING_RESYNC_ENABLE
+#define RGB_DI_PIN B9
+
+#ifdef RGB_MATRIX_ENABLE
+#define DRIVER_LED_TOTAL 12
+#endif
 
 #ifdef RGBLIGHT_ENABLE
-#define RGB_DI_PIN B9
 #define RGBLED_NUM 12
 // #define RGBLIGHT_LIMIT_VAL 128
 #define RGBLIGHT_SLEEP
@@ -56,5 +56,9 @@
 #define RGBLIGHT_EFFECT_STATIC_GRADIENT
 #define RGBLIGHT_EFFECT_RAINBOW_MOOD
 #define RGBLIGHT_EFFECT_RAINBOW_SWIRL
-#define RGBLIGHT_EFFECT_TWINKLE
 #endif
+
+/* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
+#define LOCKING_SUPPORT_ENABLE
+/* Locking resynchronize hack */
+#define LOCKING_RESYNC_ENABLE

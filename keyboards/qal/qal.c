@@ -21,3 +21,25 @@ void board_init(void) {
     // disabled before using B7 as I2C1_SDA.
     setPinInputHigh(B9);
 }
+
+#ifdef RGB_MATRIX_ENABLE 
+
+#define XX NO_LED 
+
+led_config_t g_led_config = { {
+  // Key Matrix to LED Index
+	{ XX, XX, XX, XX, XX, XX, XX, XX, XX, XX }, \
+	{ 0,  XX, XX, XX, XX, XX, XX, XX, XX, 11 }, \
+	{ 1,  2,  3,  4,  5,  6,  7,  8,  9,  10 }, \
+	{ XX, XX, XX, XX, XX, XX, XX, XX, XX, XX }, \
+}, {
+  // LED Index to Physical Position
+  { 0,   21 }, { 0,   43 }, { 25,  43 }, { 50,  43 },
+  { 75,  43 }, { 100, 43 }, { 125, 43 }, { 150, 43 },
+  { 175, 43 }, { 200, 43 }, { 224, 43 }, { 224, 21 }
+}, {
+  // LED Index to Flag
+  2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2
+} };
+
+#endif
