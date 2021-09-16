@@ -1,6 +1,8 @@
 ## Overview
 
-Based on the QMK `develop` branch and Drashna's [userspace](https://github.com/drashna/qmk_firmware/tree/custom_drashna/users/drashna)
+Based on the QMK `develop` branch and Drashna's [userspace](https://github.com/drashna/qmk_firmware/tree/custom_drashna/users/drashna).
+
+Also uses [gBoards' combos](http://combos.gboards.ca/) for combo dictionary management. The combo dictionary can be defined at the keymap level `config.h`.
 
 ## License
 
