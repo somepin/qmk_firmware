@@ -25,7 +25,7 @@ NOTE: These are all the same length.  If you do a search/replace
 #define _________________QWERTY_R2_________________       KC_H,    KC_J,    KC_K,    KC_L,    KC_QUOT
 #define _________________QWERTY_R3_________________       KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH
 
-#define _______________QWERTY_HRM_L________________       LGUI_T(KC_A), LALT_T(KC_S), LCTL_T(KC_D), LSFT_T(KC_F), KC_G,
+#define _______________QWERTY_HRM_L________________       LGUI_T(KC_A), LALT_T(KC_S), LCTL_T(KC_D), LSFT_T(KC_F), KC_G
 #define _______________QWERTY_HRM_R________________       KC_H, RSFT_T(KC_J), RCTL_T(KC_K), RALT_T(KC_L), RGUI_T(KC_QUOT)
 
 
@@ -50,7 +50,7 @@ NOTE: These are all the same length.  If you do a search/replace
 
 
 #define ___________________BLANK___________________       _______, _______, _______, _______, _______
-
+#define XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX       KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO
 
 #define _________________LOWER_L1__________________       ________________NUMBER_LEFT________________
 #define _________________LOWER_L2__________________       KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_GRV

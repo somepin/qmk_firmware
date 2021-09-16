@@ -7,6 +7,7 @@ enum userspace_layers {
     _BASE = 0,
     _QWERTY,
     _GAMING,
+    _NAV,
     _LOWER,
     _RAISE,
     _ADJUST,
