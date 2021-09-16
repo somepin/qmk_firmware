@@ -21,7 +21,8 @@ void suspend_power_down_user(void) {
 #endif
 }
 
-layer_state_t layer_state_set_user(layer_state_t state) {
+__attribute__((weak)) layer_state_t layer_state_set_keymap(layer_state_t state) { return state; }
+layer_state_t                       layer_state_set_user(layer_state_t state) {
     state = update_tri_layer_state(state, _RAISE, _LOWER, _ADJUST);
 #if defined (COMBO_ENABLE)
     switch(get_highest_layer(state | default_layer_state)) {

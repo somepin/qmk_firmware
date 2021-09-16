@@ -3,7 +3,7 @@
 #define IGNORE_MOD_TAP_INTERRUPT
 
 #ifdef COMBO_ENABLE
-#define COMBO_VARIABLE_LEN 7
+#define COMBO_VARIABLE_LEN
 #endif
 
 #ifdef OLED_ENABLE
