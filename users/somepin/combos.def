@@ -7,5 +7,8 @@
 #endif
 
 // shared combos
-COMB(clkCaps,    KC_CAPS,         KC_C, KC_L, KC_K)
+#if defined(MOUSEKEY_ENABLE)
 COMB(btn123,     KC_BTN3,         KC_BTN1, KC_BTN2)
+#endif
+
+COMB(clkCaps,    KC_CAPS,         KC_C, KC_L, KC_K)
