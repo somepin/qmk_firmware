@@ -27,13 +27,13 @@
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT_base_wrapper(
         ______________COLEMAK_MOD_DH_L1____________, ______________COLEMAK_MOD_DH_R1____________,
-        ______________COLEMAK_DH_HRM_L_____________, ______________COLEMAK_DH_HRM_R_____________,
+        ______________COLEMAK_DH_HRM_L2____________, ______________COLEMAK_DH_HRM_R2____________,
         ______________COLEMAK_MOD_DH_L3____________, ______________COLEMAK_MOD_DH_R3____________
     ),
 
     [_QWERTY] = LAYOUT_base_wrapper(
         _________________QWERTY_L1_________________, _________________QWERTY_R1_________________,
-        _______________QWERTY_HRM_L________________, _______________QWERTY_HRM_R________________,
+        _______________QWERTY_HRM_L2_______________, _______________QWERTY_HRM_R2_______________,
         _________________QWERTY_L3_________________, _________________QWERTY_R3_________________
     ),
 
