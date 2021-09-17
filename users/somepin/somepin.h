@@ -8,6 +8,8 @@ enum userspace_layers {
     _QWERTY,
     _GAMING,
     _NAV,
+    _NAV_NUM,
+    _FN,
     _LOWER,
     _RAISE,
     _ADJUST,

@@ -28,8 +28,4 @@
 /* Locking resynchronize hack */
 #define LOCKING_RESYNC_ENABLE
 
-#define IGNORE_MOD_TAP_INTERRUPT
-
 #define TAPPING_TERM 200
-
-#define COMBO_ONLY_FROM_LAYER 0

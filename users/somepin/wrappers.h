@@ -12,9 +12,6 @@ Organized so we can quickly adapt and modify all of them
 at once, rather than for each keyboard, one at a time.
 And this allows for much cleaner blocks in the keymaps.
 For instance Tap/Hold for Control on all of the layouts
-NOTE: These are all the same length.  If you do a search/replace
-  then you need to add/remove underscores to keep the
-  lengths consistent.
 */
 // clang-format off
 #define _________________QWERTY_L1_________________       KC_Q,    KC_W,    KC_E,    KC_R,    KC_T
