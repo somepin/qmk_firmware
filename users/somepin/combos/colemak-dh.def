@@ -6,6 +6,7 @@ COMB(fpTab,      KC_TAB,          KC_F, KC_P)
 // Right hand
 COMB(luDel,      KC_DEL,          KC_L, KC_U)
 COMB(uyBspc,     KC_BSPC,         KC_U, KC_Y)
+COMB(numBspc,    KC_BSPC,         KC_8, KC_9)
 COMB(yQuotScln,  KC_SCLN,         KC_Y, KC_QUOT)
 COMB(khCol,      KC_COLN,         KC_K, KC_H)
 COMB(hCommEnt,   KC_ENT,          KC_H, KC_COMM)
