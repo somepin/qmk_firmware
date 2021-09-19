@@ -2,6 +2,8 @@
 
 #define IGNORE_MOD_TAP_INTERRUPT
 
+#define TAPPING_TOGGLE 2
+
 #ifdef COMBO_ENABLE
 #define COMBO_VARIABLE_LEN
 #define COMBO_TERM 50
