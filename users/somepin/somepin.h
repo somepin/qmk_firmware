@@ -9,6 +9,7 @@ enum userspace_layers {
     _GAMING,
     _NAV,
     _NAV_NUM,
+    _NUMPD,
     _FN,
     _LOWER,
     _RAISE,
@@ -22,9 +23,35 @@ layer_state_t layer_state_set_keymap(layer_state_t state);
 
 #define LOWER  LT(_LOWER, KC_BSPC)
 #define RAISE  LT(_RAISE, KC_SPC)
+
+// QAZ/QAL modtaps
 #define KC_SZ  LSFT_T(KC_Z)
 #define KC_SDT RSFT_T(KC_DOT)
 #define KC_GES LGUI_T(KC_ESC)
 #define KC_AEN RALT_T(KC_ENT)
 #define KC_CQT LCTL_T(KC_QUOT)
 #define KC_CSL RCTL_T(KC_SLSH)
+
+// Left-hand home row mods Colemak
+#define HM_AC LGUI_T(KC_A)
+#define HM_RC LALT_T(KC_R)
+#define HM_SC LCTL_T(KC_S)
+#define HM_TC LSFT_T(KC_T)
+
+// Right-hand home row mods Colemak
+#define HM_NC RSFT_T(KC_N)
+#define HM_EC RCTL_T(KC_E)
+#define HM_IC LALT_T(KC_I)
+#define HM_OC RGUI_T(KC_O)
+
+// Left-hand home row mods QWERTY
+#define HM_AQ LGUI_T(KC_A)
+#define HM_SQ LALT_T(KC_S)
+#define HM_DQ LCTL_T(KC_D)
+#define HM_FQ LSFT_T(KC_F)
+
+// Right-hand home row mods QWERTY
+#define HM_JQ RSFT_T(KC_J)
+#define HM_KQ RCTL_T(KC_K)
+#define HM_LQ LALT_T(KC_L)
+#define HM_QTQ RGUI_T(KC_QUOT)

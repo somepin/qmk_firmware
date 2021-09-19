@@ -23,8 +23,8 @@ For instance Tap/Hold for Control on all of the layouts
 #define _________________QWERTY_R2_________________       KC_H,    KC_J,    KC_K,    KC_L,    KC_QUOT
 #define _________________QWERTY_R3_________________       KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH
 
-#define _______________QWERTY_HRM_L2_______________       LGUI_T(KC_A), LALT_T(KC_S), LCTL_T(KC_D), LSFT_T(KC_F), KC_G
-#define _______________QWERTY_HRM_R2_______________       KC_H, RSFT_T(KC_J), RCTL_T(KC_K), RALT_T(KC_L), RGUI_T(KC_QUOT)
+#define _______________QWERTY_HRM_L2_______________       HM_AQ,   HM_SQ,   HM_DQ,   HM_FQ,   KC_G
+#define _______________QWERTY_HRM_R2_______________       KC_H,    HM_JQ,   HM_KQ,   HM_LQ,   HM_QTQ
 
 
 #define ______________COLEMAK_MOD_DH_L1____________       KC_Q,    KC_W,    KC_F,    KC_P,    KC_B
@@ -37,8 +37,8 @@ For instance Tap/Hold for Control on all of the layouts
 #define ______________COLEMAK_MOD_DH_R2____________       KC_M,    KC_N,    KC_E,    KC_I,    KC_O  
 #define ______________COLEMAK_MOD_DH_R3____________       KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLASH
 
-#define ______________COLEMAK_DH_HRM_L2____________      LGUI_T(KC_A), LALT_T(KC_R), LCTL_T(KC_S), LSFT_T(KC_T), KC_G
-#define ______________COLEMAK_DH_HRM_R2____________      KC_M, RSFT_T(KC_N), RCTL_T(KC_E), RALT_T(KC_I), RGUI_T(KC_O)
+#define ______________COLEMAK_DH_HRM_L2____________       HM_AC,    HM_RC,   HM_SC,   HM_TC,   KC_G
+#define ______________COLEMAK_DH_HRM_R2____________       KC_M,     HM_NC,   HM_EC,   HM_IC,   HM_OC
 
 
 #define ________________NUMBER_LEFT________________       KC_1,    KC_2,    KC_3,    KC_4,    KC_5
