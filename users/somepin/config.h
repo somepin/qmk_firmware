@@ -9,6 +9,11 @@
 #define COMBO_TERM 50
 #endif
 
+#ifdef TAPPING_TERM
+#undef TAPPING_TERM
+#define TAPPING_TERM 200
+#endif
+
 #ifdef OLED_ENABLE
 #define OLED_TIMEOUT 20000
 #endif
