@@ -1,0 +1,11 @@
+BOOTLOADER = atmel-dfu
+
+LTO_ENABLE = yes
+VIA_ENABLE = yes
+WPM_ENABLE = yes
+MOUSEKEY_ENABLE = yes
+EXTRAKEY_ENABLE = yes
+NKRO_ENABLE = yes
+RGBLIGHT_ENABLE = yes
+
+SRC += oled.c
