@@ -26,6 +26,14 @@ RGBLIGHT_ENABLE = yes
 SRC += oled.c
 endif
 
+ifeq ($(strip $(KEYBOARD)), popcorn)
+COMBO_ENABLE = yes
+NKRO_ENABLE = yes
+OLED_ENABLE = yes
+OLED_DRIVER = SSD1306 
+SRC += oled.c
+endif
+
 ifeq ($(strip $(COMBO_ENABLE)), yes)
     VPATH  +=  keyboards/gboards/
 endif
