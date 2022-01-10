@@ -41,13 +41,8 @@ void transport_slave(matrix_row_t master_matrix[], matrix_row_t slave_matrix[]);
 bool transport_execute_transaction(int8_t id, const void *initiator2target_buf, uint16_t initiator2target_length, void *target2initiator_buf, uint16_t target2initiator_length);
 
 #ifdef ENCODER_ENABLE
-#    include "gpio.h"
 #    include "encoder.h"
-// if no pads for right half are defined, we assume the keyboard is symmetric (i.e. same pads)
-#    ifndef ENCODERS_PAD_A_RIGHT
-#        define ENCODERS_PAD_A_RIGHT ENCODERS_PAD_A
-#    endif
-#    define NUMBER_OF_ENCODERS ((sizeof((pin_t[])ENCODERS_PAD_A) + sizeof((pin_t[])ENCODERS_PAD_A_RIGHT)) / sizeof(pin_t))
+#    define NUMBER_OF_ENCODERS (sizeof((pin_t[])ENCODERS_PAD_A) / sizeof(pin_t))
 #endif  // ENCODER_ENABLE
 
 #ifdef BACKLIGHT_ENABLE
@@ -110,6 +105,15 @@ typedef struct _split_mods_sync_t {
 #    endif  // NO_ACTION_ONESHOT
 } split_mods_sync_t;
 #endif  // SPLIT_MODS_ENABLE
+
+#if defined(POINTING_DEVICE_ENABLE) && defined(SPLIT_POINTING_ENABLE)
+#    include "pointing_device.h"
+typedef struct _split_slave_pointing_sync_t {
+    uint8_t        checksum;
+    report_mouse_t report;
+    uint16_t       cpi;
+} split_slave_pointing_sync_t;
+#endif  // defined(POINTING_DEVICE_ENABLE) && defined(SPLIT_POINTING_ENABLE)
 
 #if defined(SPLIT_TRANSACTION_IDS_KB) || defined(SPLIT_TRANSACTION_IDS_USER)
 typedef struct _rpc_sync_info_t {
@@ -177,6 +181,10 @@ typedef struct _split_shared_memory_t {
 #if defined(ST7565_ENABLE) && defined(SPLIT_ST7565_ENABLE)
     uint8_t current_st7565_state;
 #endif  // ST7565_ENABLE(OLED_ENABLE) && defined(SPLIT_ST7565_ENABLE)
+
+#if defined(POINTING_DEVICE_ENABLE) && defined(SPLIT_POINTING_ENABLE)
+    split_slave_pointing_sync_t pointing;
+#endif  // defined(POINTING_DEVICE_ENABLE) && defined(SPLIT_POINTING_ENABLE)
 
 #if defined(SPLIT_TRANSACTION_IDS_KB) || defined(SPLIT_TRANSACTION_IDS_USER)
     rpc_sync_info_t rpc_info;

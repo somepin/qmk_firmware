@@ -109,6 +109,10 @@ extern layer_state_t layer_state;
 #    include "process_unicodemap.h"
 #endif
 
+#ifdef UNICODE_COMMON_ENABLE
+#    include "process_unicode_common.h"
+#endif
+
 #ifdef KEY_OVERRIDE_ENABLE
 #    include "process_key_override.h"
 #endif
@@ -123,6 +127,10 @@ extern layer_state_t layer_state;
 
 #ifdef AUTO_SHIFT_ENABLE
 #    include "process_auto_shift.h"
+#endif
+
+#ifdef DYNAMIC_TAPPING_TERM_ENABLE
+#    include "process_dynamic_tapping_term.h"
 #endif
 
 #ifdef COMBO_ENABLE
