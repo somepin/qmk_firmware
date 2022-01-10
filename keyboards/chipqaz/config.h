@@ -4,7 +4,7 @@
 
 /* USB Device descriptor parameter */
 #define VENDOR_ID 0x7370
-#define PRODUCT_ID 0x6371
+#define PRODUCT_ID 0x7177
 #define DEVICE_VER 0x0001
 #define MANUFACTURER somepin
 #define PRODUCT ChipQAZ

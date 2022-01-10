@@ -34,6 +34,11 @@ OLED_DRIVER = SSD1306
 SRC += oled.c
 endif
 
+ifeq ($(strip $(KEYBOARD)), crkbd/rev1)
+ENCODER_ENABLE = yes
+COMBO_ENABLE = yes
+endif
+
 ifeq ($(strip $(COMBO_ENABLE)), yes)
     VPATH  +=  keyboards/gboards/
 endif

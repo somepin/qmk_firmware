@@ -78,7 +78,7 @@ For instance Tap/Hold for Control on all of the layouts
 
 #define _________________ADJUST_L1_________________       RGB_HUI, RGB_SAI, RGB_VAI, RGB_MOD,  RGB_TOG
 #define _________________ADJUST_L2_________________       RGB_HUD, RGB_SAD, RGB_VAD, RGB_RMOD, RGB_M_P
-#define _________________ADJUST_L3_________________       RGB_SPD, RGB_SPI, KC_LCBR, KC_RCBR,  XXXXXXX
+#define _________________ADJUST_L3_________________       RGB_SPD, RGB_SPI, KC_LCBR, KC_RCBR,  RESET
 
 #define _________________ADJUST_R1_________________       XXXXXXX, XXXXXXX,     KC_VOLU, KC_MNXT, XXXXXXX
 #define _________________ADJUST_R2_________________       XXXXXXX, TG(_GAMING), KC_VOLD, KC_MPRV, XXXXXXX
