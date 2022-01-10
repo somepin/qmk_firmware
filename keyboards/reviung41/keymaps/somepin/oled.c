@@ -106,7 +106,7 @@ void render_mod_status(uint8_t modifiers) {
     oled_write_char('S', (modifiers & MOD_MASK_SHIFT));
 }
 
-void oled_task_user(void) {
+bool oled_task_user(void) {
     if (oled_timer == 0) {
         oled_timer = timer_read();
     }
@@ -147,5 +147,6 @@ void oled_task_user(void) {
     else if (is_oled_on()) {
         oled_off();
     }
+    return false;
 }
 #endif
