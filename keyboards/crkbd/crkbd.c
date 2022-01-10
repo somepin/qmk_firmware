@@ -33,3 +33,17 @@ const keypos_t PROGMEM hand_swap_config[MATRIX_ROWS][MATRIX_COLS] = {
 	{{0, 3}, {1, 3}, {2, 3}, {3, 3}, {4, 3}, {5, 3}}
 };
 #endif
+
+#ifdef MATRIX_MASKED
+const matrix_row_t matrix_mask[MATRIX_ROWS] =
+{
+    0b111111,
+    0b111111,
+    0b111111,
+    0b111111,
+    0b111111,
+    0b111111,
+    0b111111,
+    0b000000,
+};
+#endif
