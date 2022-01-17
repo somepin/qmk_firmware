@@ -49,9 +49,18 @@
 #define DEBOUNCE 5
 
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
-#define LOCKING_SUPPORT_ENABLE
+// #define LOCKING_SUPPORT_ENABLE
 /* Locking resynchronize hack */
-#define LOCKING_RESYNC_ENABLE
+// #define LOCKING_RESYNC_ENABLE
+#undef LOCKING_SUPPORT_ENABLE
+#undef LOCKING_RESYNC_ENABLE
+
+#ifdef AUDIO_ENABLE
+#define AUDIO_PIN B7
+#define AUDIO_CLICKY
+#define AUDIO_INIT_DELAY
+// #define STARTUP_SONG SONG(SONIC_RING)
+#endif
 
 /* Define encoder pads */
 #define ENCODERS_PAD_A { D5 }
@@ -68,9 +77,9 @@
 #define RGBLIGHT_ANIMATIONS
 
 #ifdef RGB_MATRIX_ENABLE
-#define RGB_MATRIX_KEYPRESSES // reacts to keypresses
+// #define RGB_MATRIX_KEYPRESSES // reacts to keypresses
 #define RGB_DISABLE_WHEN_USB_SUSPENDED // turn off effects when suspended
-#define RGB_MATRIX_FRAMEBUFFER_EFFECTS
+// #define RGB_MATRIX_FRAMEBUFFER_EFFECTS
 #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 150 // limits maximum brightness of LEDs to 150 out of 255. Higher may cause the controller to crash.
 #define RGB_MATRIX_HUE_STEP 8
 #define RGB_MATRIX_SAT_STEP 8
