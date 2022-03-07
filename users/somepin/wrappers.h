@@ -60,8 +60,8 @@ For instance Tap/Hold for Control on all of the layouts
 #define _________________LOWER_L3__________________       KC_MINS, KC_EQL,  KC_LPRN, KC_RPRN, KC_BSLS
 
 #define _________________LOWER_R1__________________       ________________NUMBER_RIGHT_______________
-#define _________________LOWER_R2_CS_______________       ______________NAV_1_______________,  KC_INS
-#define _________________LOWER_R3_CS_______________       ______________NAV_2_______________,  KC_DEL
+#define _________________LOWER_R2_CS_______________       ______________NAV_1_______________,  KC_CAPS
+#define _________________LOWER_R3_CS_______________       ______________NAV_2_______________,  KC_INS
 
 #define _________________LOWER_R2_RS_______________       ______________NAV_1_______________, KC_CAPS
 #define _________________LOWER_R3_RS_______________       KC_INS,  ______________NAV_2_______________

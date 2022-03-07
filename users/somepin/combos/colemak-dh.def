@@ -9,6 +9,8 @@ COMB(uyBspc,     KC_BSPC,         KC_U, KC_Y)
 COMB(yQuotScln,  KC_SCLN,         KC_Y, KC_QUOT)
 COMB(khCol,      KC_COLN,         KC_K, KC_H)
 COMB(hCommEnt,   KC_ENT,          KC_H, KC_COMM)
+//COMB(comSDotSlsh, KC_SLSH,         KC_COMM, KC_SDT)
+COMB(comDotSlsh, KC_SLSH,         KC_COMM, KC_DOT)
 
 // Other
 COMB(qplScSlp,   KC_SLEP,         KC_Q, KC_P, KC_L, KC_QUOT)

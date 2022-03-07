@@ -4,6 +4,10 @@
 #include "g/keymap_combo.h"
 #endif
 
+#if defined(AUDIO_ENABLE)
+float tone_startup[][2] = SONG(USSR_ANTHEM);
+#endif
+
 void matrix_init_user(void) {
 #if defined(BOOTLOADER_CATERINA) && defined(__AVR__)
     // supposedly turn off red pro micro led
@@ -12,6 +16,15 @@ void matrix_init_user(void) {
 
     DDRB &= ~(1 << 0);
     PORTB &= ~(1 << 0);
+#endif
+#if defined(AUDIO_ENABLE)
+    startup_user();
+#endif
+}
+
+void startup_user() {
+#if defined(AUDIO_ENABLE)
+    PLAY_SONG(tone_startup);
 #endif
 }
 
