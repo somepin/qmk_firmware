@@ -26,8 +26,14 @@
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT_base_wrapper(
-        LT(_FN, KC_Q), KC_W,  KC_E,  KC_R,  KC_T, _________________QWERTY_R1_________________,
-        LCTL_T(KC_A),     KC_S,  KC_D,  KC_F,  KC_G, KC_H,  KC_J,  KC_K,  KC_L,  RCTL_T(KC_QUOT),
+        ______________COLEMAK_MOD_DH_L1____________, ______________COLEMAK_MOD_DH_R1____________,
+        HM_AC,  HM_RC, HM_SC, HM_TC,  LT(_FN, KC_G), ______________COLEMAK_DH_HRM_R2____________,
+        LSFT_T(KC_X),  KC_C,  KC_D,   KC_V,    KC_Z, KC_K,  KC_H,  KC_COMM, KC_SDT
+    ),
+
+    [_QWERTY] = LAYOUT_base_wrapper(
+        _________________QWERTY_L1_________________, _________________QWERTY_R1_________________,
+        HM_AQ,  HM_SQ, HM_DQ, HM_FQ,  LT(_FN, KC_G), _______________QWERTY_HRM_R2_______________,
         KC_SZ,   ___________Q_ANGLE_MOD_L3_________, KC_N,  KC_M,  KC_COMM, KC_SDT
     ),
 
@@ -38,9 +44,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [_FN] = LAYOUT_base_wrapper(
-        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX, XXXXXXX, KC_F1,  KC_F2,  KC_F3,  KC_F4,
-        ______________MOD_LEFT____________, XXXXXXX, XXXXXXX, KC_F5,  KC_F6,  KC_F7,  KC_F8,
-        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX, KC_F9,   KC_F10, KC_F11, KC_F12
+        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX, XXXXXXX,     KC_F1,  KC_F2,  KC_F3,  KC_F4,
+        ______________MOD_LEFT____________, XXXXXXX, TG(_QWERTY), KC_F5,  KC_F6,  KC_F7,  KC_F8,
+        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX, KC_F9,       KC_F10, KC_F11, KC_F12
     ),
 };
 // clang-format on
