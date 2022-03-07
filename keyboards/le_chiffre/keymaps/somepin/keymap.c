@@ -1,5 +1,8 @@
 #include "somepin.h"
 
+float enter[][2] = SONG(SONIC_RING);
+float esc[][2] = SONG(SONIC_LOSE);
+
 /*
  * The `LAYOUT_le_chiffre_base` macro is a template to allow the use of identical
  * modifiers for the default layouts (eg QWERTY, Colemak, Dvorak, etc), so
@@ -19,7 +22,7 @@
     K00,   K01,   K02,   K03,   K04,   KC_NO,  K05,   K06,    K07,   K08,   K09, \
     K10,   K11,   K12,   K13,   K14,           K15,   K16,    K17,   K18,   K19, \
     K20,   K21,   K22,   K23,   K24,           K25,   K26,    K27,   K28,   K29, \
-                        KC_ESC, LOWER,         RAISE, KC_ENT              \
+                        KC_GES, LOWER,         RAISE, KC_AEN                     \
   )
 #define LAYOUT_base_wrapper(...)       LAYOUT_le_chiffre_base(__VA_ARGS__)
 
@@ -56,3 +59,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     )
 };
 // clang-format on
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    case KC_AEN:
+    case KC_ENTER:
+      // Play a tone when enter is pressed
+      if (record->event.pressed) {
+        PLAY_SONG(enter);
+      }
+      return true; // Let QMK send the enter press/release events
+    case KC_GES:
+    case KC_ESC:
+      if (record->event.pressed) {
+        PLAY_SONG(esc);
+      }
+      return true;
+    default:
+      return true; // Process all other keycodes normally
+  }
+}
