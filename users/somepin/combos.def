@@ -1,0 +1,22 @@
+#if defined(COMBO_DICT_COLEMAK_DH)
+#include "combos/colemak-dh.def"
+#endif
+
+#if defined(COMBO_DICT_DVORAK)
+#include "combos/dvorak.def"
+#endif
+
+#if defined(COMBO_DICT_QWERTY)
+#include "combos/qwerty.def"
+#endif
+
+#if defined(COMBO_DICT_ALPHA)
+#include "combos/alpha.def"
+#endif
+
+// shared combos
+#if defined(MOUSEKEY_ENABLE)
+COMB(btn123,     KC_BTN3,         KC_BTN1, KC_BTN2)
+#endif
+
+COMB(clkCaps,    KC_CAPS,         KC_C, KC_L, KC_K)

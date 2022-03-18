@@ -1,0 +1,13 @@
+// Vim-Mode combos
+// Left hand
+COMB(commDotEsc, KC_ESC,          KC_COMM, KC_DOT)
+COMB(dotPTab,    KC_TAB,          KC_DOT, KC_P)
+
+// Right hand
+COMB(gcDel,      KC_DEL,          KC_G, KC_C)
+COMB(crBspc,     KC_BSPC,         KC_C, KC_R)
+COMB(rlSlsh,     KC_SLSH,         KC_R, KC_L)
+COMB(mwEnt,      KC_ENT,          KC_M, KC_W)
+
+// Other
+COMB(slp,        KC_SLEP,         KC_QUOT, KC_P, KC_G, KC_L)
