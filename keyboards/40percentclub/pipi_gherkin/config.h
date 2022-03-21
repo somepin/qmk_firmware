@@ -43,6 +43,6 @@
 #define RATED_VOLTAGE 3
 #define V_PEAK 5
 
-#define DRV_GREETING lg_dblsharp_tick
+#define DRV_GREETING trp_click
 #define DRV_MODE_DEFAULT strong_buzz
 #endif
