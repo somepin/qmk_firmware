@@ -1,5 +1,9 @@
 #include "somepin.h"
 
+float enter[][2] = SONG(SAMSUNG_NOTIF);
+// float esc[][2] = SONG(HIDE_AND_SEEK);
+float caps[][2] = SONG(MII);
+
 /*
  * The `LAYOUT_alpha_base` macro is a template to allow the use of identical
  * modifiers for the default layouts (eg QWERTY, Colemak, Dvorak, etc), so
@@ -43,3 +47,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 };
 // clang-format on
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    case KC_ENTER:
+      // Play a tone when enter is pressed
+      if (record->event.pressed) {
+        PLAY_SONG(enter);
+      }
+      return true; // Let QMK send the enter press/release events
+    // case KC_ESC:
+    //   if (record->event.pressed) {
+    //     PLAY_SONG(esc);
+    //   }
+    //   return true;
+    case KC_CAPS:
+      if (record->event.pressed) {
+        PLAY_SONG(caps);
+      }
+      return true;
+    default:
+      return true; // Process all other keycodes normally
+  }
+}

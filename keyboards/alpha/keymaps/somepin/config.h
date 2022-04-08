@@ -14,4 +14,6 @@
 #define AUDIO_PIN C6
 #define AUDIO_PIN_ALT B6
 #define AUDIO_CLICKY
+#define AUDIO_INIT_DELAY
+#define STARTUP_SONG SONG(SAMSUNG_NOTIF)
 #endif
