@@ -77,11 +77,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 void render_mod_status(uint8_t modifiers) {
+    static const char PROGMEM mod_status[5][3] = {{0xDB, 0xDC, 0}, {0xD7, 0xD8, 0}, {0xD5, 0xD6, 0}, {0xD9, 0xDA, 0}, {0xDD, 0xDE, 0}};
     oled_set_cursor(0,3);
-    oled_write_char('G', (modifiers & MOD_MASK_GUI));
-    oled_write_char('A', (modifiers & MOD_MASK_ALT));
-    oled_write_char('C', (modifiers & MOD_MASK_CTRL));
-    oled_write_char('S', (modifiers & MOD_MASK_SHIFT));
+    oled_write_P(mod_status[0], (modifiers & MOD_MASK_GUI));
+    oled_write_P(mod_status[1], (modifiers & MOD_MASK_ALT));
+    oled_write_P(PSTR(" "), false);
+    oled_write_P(mod_status[2], (modifiers & MOD_MASK_CTRL));
+    oled_write_P(mod_status[3], (modifiers & MOD_MASK_SHIFT));
 }
 
 void oled_render_layer_state(void) {

@@ -6,7 +6,7 @@ ifneq ($(PLATFORM),CHIBIOS)
     endif
 endif
 
-ifeq ($(strip $(KEYBOARD)), qal)
+ifeq ($(strip $(KEYBOARD)), somepin/qal)
 COMBO_ENABLE = yes
 RGB_MATRIX_ENABLE = yes
 RGB_MATRIX_DRIVER = WS2812
@@ -26,7 +26,7 @@ RGBLIGHT_ENABLE = yes
 SRC += oled.c
 endif
 
-ifeq ($(strip $(KEYBOARD)), popcorn)
+ifeq ($(strip $(KEYBOARD)), somepin/popcorn)
 COMBO_ENABLE = yes
 NKRO_ENABLE = yes
 OLED_ENABLE = yes
