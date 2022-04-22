@@ -32,6 +32,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // #define TAPPING_FORCE_HOLD
 // #define TAPPING_TERM 100
-
+#define SPLIT_LED_STATE_ENABLE
 #define COMBO_DICT_COLEMAK_DH
+
 #define OLED_FONT_H "lib/glcdfont.c"

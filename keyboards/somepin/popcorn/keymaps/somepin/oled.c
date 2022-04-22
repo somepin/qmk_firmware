@@ -1,4 +1,5 @@
 #include "somepin.h"
+#include "lib/oled_functions.c"
 
 #ifdef OLED_ENABLE
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
@@ -7,6 +8,16 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
   }
   return rotation;
 }
+
+/* Placement information for display elements */
+#    define NUMLOCK_DISPLAY_X 0
+#    define NUMLOCK_DISPLAY_Y 42
+
+#    define CAPSLOCK_DISPLAY_X 0
+#    define CAPSLOCK_DISPLAY_Y 54
+
+#    define SCROLLLOCK_DISPLAY_X 0
+#    define SCROLLLOCK_DISPLAY_Y 66
 
 #define ANIM_FRAME_DURATION 200 // how long each frame lasts in ms
 #define ANIM_SIZE 636 // number of bytes in array, minimize for adequate firmware size, max is 1024
@@ -86,6 +97,13 @@ void render_mod_status(uint8_t modifiers) {
     oled_write_P(mod_status[3], (modifiers & MOD_MASK_SHIFT));
 }
 
+void draw_keyboard_locks(void) {
+    led_t led_state = host_keyboard_led_state();
+    draw_text_rectangle(NUMLOCK_DISPLAY_X, NUMLOCK_DISPLAY_Y, 5 + (3 * 6), "NUM", led_state.num_lock);
+    draw_text_rectangle(CAPSLOCK_DISPLAY_X, CAPSLOCK_DISPLAY_Y, 5 + (3 * 6), "CAP", led_state.caps_lock);
+    draw_text_rectangle(SCROLLLOCK_DISPLAY_X, SCROLLLOCK_DISPLAY_Y, 5 + (3 * 6), "SCR", led_state.scroll_lock);
+}
+
 void oled_render_layer_state(void) {
     oled_set_cursor(0,0);
     oled_write_P(PSTR("Mode:"), false);
@@ -126,9 +144,7 @@ bool oled_task_user(void) {
         if (is_oled_on() && (timer_elapsed(oled_timer) < 20000)) {
             oled_render_layer_state();
             render_mod_status(get_mods());
-            led_t led_state = host_keyboard_led_state();
-            oled_set_cursor(0,5);
-            oled_write_P(led_state.caps_lock ? PSTR("CAPS") : PSTR("    "), false);
+            draw_keyboard_locks();
             render_anim();
         } else if (is_oled_on()) {
             oled_off();
