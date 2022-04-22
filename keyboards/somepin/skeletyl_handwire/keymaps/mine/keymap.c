@@ -42,6 +42,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                    LALT_T(KC_ESC),     _______,  _______,           _______, _______, RGUI_T(KC_TAB)         
   ), 
 
+  [_GAMING] = LAYOUT(
+    KC_ESC,   KC_Q,  KC_W,     KC_E,    KC_R,    KC_T,        KC_Y,    KC_UP,   KC_I,    KC_ESC,
+    KC_TAB,   KC_A,  KC_S,     KC_D,    KC_F,    KC_G,        KC_LEFT, KC_DOWN, KC_RGHT, KC_TAB,
+    KC_LSFT,  KC_Z,  KC_X,     KC_C,    KC_V,    KC_B,        KC_N,    KC_M,    KC_COMM, KC_RSFT,
+                     KC_NO,  KC_SPC,  KC_SPC,    TG(_GAMING), KC_NO,   KC_NO
+  ),
+
   [_NAV] = LAYOUT(
     XXXXXXX, XXXXXXX, KC_UP,   XXXXXXX,   XXXXXXX,             XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  
     XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT,   XXXXXXX,             KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  XXXXXXX,
@@ -51,7 +58,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_LOWER] = LAYOUT(
     KC_1,     KC_2,     KC_3,     KC_4,     KC_5,              KC_6,     KC_7,     KC_8,     KC_9,     KC_0,  
-    KC_LGUI,  KC_LALT,  KC_LCTL,  KC_LSFT,  KC_GRV,            KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  KC_INS,
+    KC_LGUI,  KC_LALT,  KC_LCTL,  KC_LSFT,  KC_GRV,            KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  KC_CAPS,
     KC_MINS,  KC_EQL,   KC_LPRN,  KC_RPRN,  KC_BSLS,           KC_HOME,  KC_PGDN,  KC_PGUP,  KC_END,   KC_DEL,
                         _______,  _______,  RESET,             _______,  _______,  _______         
   ),
@@ -65,7 +72,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   
   [_ADJUST] = LAYOUT(
     RGB_HUI, RGB_SAI, RGB_VAI, RGB_MOD,   RGB_TOG,             XXXXXXX,  XXXXXXX,      KC_VOLU,  KC_MNXT,  XXXXXXX,  
-    RGB_HUD, RGB_SAD, RGB_VAD, RGB_RMOD,  RGB_M_P,             XXXXXXX,  XXXXXXX,      KC_VOLD,  KC_MPRV,  XXXXXXX,
+    RGB_HUD, RGB_SAD, RGB_VAD, RGB_RMOD,  RGB_M_P,             XXXXXXX,  TG(_GAMING),      KC_VOLD,  KC_MPRV,  XXXXXXX,
     RGB_SPD, RGB_SPI, KC_LCBR, KC_RCBR,   XXXXXXX,             RESET,    TG(_QWERTY),  KC_MUTE,  KC_MPLY,  XXXXXXX,  
                       _______, _______,   _______,             _______,  _______,      _______         
   ),

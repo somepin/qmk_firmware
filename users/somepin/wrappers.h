@@ -7,7 +7,7 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 */
 
 /*
-Blocks for each of the four major keyboard layouts
+Blocks for the two keyboard layouts I use
 Organized so we can quickly adapt and modify all of them
 at once, rather than for each keyboard, one at a time.
 And this allows for much cleaner blocks in the keymaps.

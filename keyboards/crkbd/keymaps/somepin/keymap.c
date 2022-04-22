@@ -37,6 +37,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _________________QWERTY_L3_________________, _________________QWERTY_R3_________________
     ),
 
+    [_GAMING] = LAYOUT_wrapper(
+        KC_ESC,   KC_Q,  KC_W,     KC_E,    KC_R,    KC_T,        KC_Y,    KC_UP,   KC_I,    KC_ESC,
+        KC_TAB,   KC_A,  KC_S,     KC_D,    KC_F,    KC_G,        KC_LEFT, KC_DOWN, KC_RGHT, KC_TAB,
+        KC_LSFT,  KC_Z,  KC_X,     KC_C,    KC_V,    KC_B,        KC_N,    KC_M,    KC_COMM, KC_RSFT,
+                         KC_NO,  KC_SPC,  KC_SPC,    TG(_GAMING), KC_NO,   KC_NO
+    ),
+
     [_LOWER] = LAYOUT_base_wrapper(
         _________________LOWER_L1__________________, _________________LOWER_R1__________________,
         _________________LOWER_L2__________________, _________________LOWER_R2_CS_______________,

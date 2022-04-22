@@ -26,13 +26,13 @@ RGBLIGHT_ENABLE = yes
 SRC += oled.c
 endif
 
-ifeq ($(strip $(KEYBOARD)), somepin/popcorn)
-COMBO_ENABLE = yes
-NKRO_ENABLE = yes
-OLED_ENABLE = yes
-OLED_DRIVER = SSD1306 
-SRC += oled.c
-endif
+# ifeq ($(strip $(KEYBOARD)), somepin/popcorn)
+# COMBO_ENABLE = yes
+# NKRO_ENABLE = yes
+# OLED_ENABLE = yes
+# OLED_DRIVER = SSD1306 
+# SRC += oled.c
+# endif
 
 ifeq ($(strip $(KEYBOARD)), crkbd/rev1)
 ENCODER_ENABLE = yes
