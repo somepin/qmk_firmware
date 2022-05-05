@@ -37,6 +37,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_SZ,   ___________Q_ANGLE_MOD_L3_________, KC_N,  KC_M,  KC_COMM, KC_SDT
     ),
 
+    [_GAMING] = LAYOUT_wrapper(
+        KC_ESC,   KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y,    KC_UP,   KC_I,    KC_ESC,
+        KC_TAB,   KC_A, KC_S, KC_D, KC_F, KC_G, KC_LEFT, KC_DOWN, KC_RGHT, KC_TAB,
+        KC_LSFT,  KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N,    KC_M,    KC_RSFT,
+                               KC_LALT,  KC_SPC,  TG(_GAMING)
+    ),
+
     [_NAV_NUM] = LAYOUT_base_wrapper(
         _________________LOWER_L1__________________, _________________LOWER_R1__________________,
         _________________LOWER_L2__________________, _________________LOWER_R2_RS_______________,
@@ -44,7 +51,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [_FN] = LAYOUT_base_wrapper(
-        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX, XXXXXXX,     KC_F1,  KC_F2,  KC_F3,  KC_F4,
+        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX, TG(_GAMING),     KC_F1,  KC_F2,  KC_F3,  KC_F4,
         ______________MOD_LEFT____________, XXXXXXX, TG(_QWERTY), KC_F5,  KC_F6,  KC_F7,  KC_F8,
         XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX, KC_F9,       KC_F10, KC_F11, KC_F12
     ),
