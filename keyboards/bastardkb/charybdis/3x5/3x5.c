@@ -36,7 +36,7 @@
  *
  * Note: the LED config simulates 36 LEDs instead of the actual 35 to prevent
  * confusion when testing LEDs during assembly when handedness is not set
- * correctly.  Those fake LEDs are bound to the physical top-left corner.
+ * correctly.  Those fake LEDs are bound to the physical bottom-left corner.
  */
 led_config_t g_led_config = { {
     /* Key Matrix to LED index. */
@@ -44,12 +44,13 @@ led_config_t g_led_config = { {
     {      2,      3,      8,      9,     12 }, // Top row
     {      1,      4,      7,     10,     13 }, // Middle row
     {      0,      5,      6,     11,     14 }, // Bottom row
-    {     17, NO_LED,     15,     16, NO_LED }, // Thumb cluster
+    {     16, NO_LED,     15,     NO_LED, NO_LED }, // Thumb cluster
     // Right split.
     {     20,     21,     26,     27,     30 }, // Top row
     {     19,     22,     25,     28,     31 }, // Middle row
     {     18,     23,     24,     29,     32 }, // Bottom row
     {     33, NO_LED,     34, NO_LED, NO_LED }, // Thumb cluster
+
 }, {
     /* LED index to physical position. */
     // Left split.
@@ -58,14 +59,20 @@ led_config_t g_led_config = { {
     /* index=6  */ {  36,  42 }, {  36,  21 }, {  36,   0 },
     /* index=9  */ {  54,   0 }, {  54,  21 }, {  54,  42 },
     /* index=12 */ {  72,   0 }, {  72,  21 }, {  72,  42 },
-    /* index=15 */ {  72,  64 }, {  90,  64 }, { 108,  64 }, // Thumb cluster
+    /* index=15 */ {  108,  64 }, { 90,  64 }, {  72,  64 }, // Thumb cluster
+
+    {  36,  64 }, {  36,  64 }, {  36,  64 }, 
+    {  36,  64 }, {  36,  64 }, {  36,  64 }, 
+    {  36,  64 }, {  36,  64 }, {  36,  64 }, 
+    {  36,  64 }, {  36,  64 }, {  36,  64 }, //Falcon left
+
     // Right split.
     /* index=18 */ { 224,  42 }, { 224,  21 }, { 224,   0 }, // col 10 (right most)
     /* index=21 */ { 206,   0 }, { 206,  21 }, { 206,  42 }, // col 9
     /* index=24 */ { 188,  42 }, { 188,  21 }, { 188,   0 },
     /* index=27 */ { 170,   0 }, { 170,  21 }, { 170,  42 },
     /* index=30 */ { 152,   0 }, { 152,  21 }, { 152,  42 },
-    /* index=33 */ { 134,  64 }, { 152,  64 }, {   0,   0 },
+    /* index=33 */ { 134,  64 }, { 152,  64 }, {   0,   0 }, // Thumb cluster
 }, {
     /* LED index to flag. */
     // Left split.
@@ -74,14 +81,20 @@ led_config_t g_led_config = { {
     /* index=6  */ LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,
     /* index=9  */ LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,
     /* index=12 */ LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,
-    /* index=15 */ LED_FLAG_MODIFIER, LED_FLAG_MODIFIER, LED_FLAG_MODIFIER, // Thumb cluster
+    /* index=15 */ LED_FLAG_MODIFIER, LED_FLAG_MODIFIER, LED_FLAG_KEYLIGHT, // Thumb cluster
+
+    LED_FLAG_MODIFIER, LED_FLAG_MODIFIER, LED_FLAG_MODIFIER,
+    LED_FLAG_MODIFIER, LED_FLAG_MODIFIER, LED_FLAG_MODIFIER,
+    LED_FLAG_MODIFIER, LED_FLAG_MODIFIER, LED_FLAG_MODIFIER,
+    LED_FLAG_MODIFIER, LED_FLAG_MODIFIER, LED_FLAG_MODIFIER, //Falcon left
+
     // Right split.
     /* index=18 */ LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, // col 10
     /* index=21 */ LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, // col 9
     /* index=24 */ LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,
     /* index=27 */ LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,
     /* index=30 */ LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT,
-    /* index=33 */ LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, LED_FLAG_KEYLIGHT, // Thumb cluster
+    /* index=33 */ LED_FLAG_MODIFIER, LED_FLAG_MODIFIER, LED_FLAG_KEYLIGHT, // Thumb cluster
 } };
 #endif
 // clang-format on

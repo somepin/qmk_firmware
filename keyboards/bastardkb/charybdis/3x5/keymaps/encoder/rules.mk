@@ -1,0 +1,5 @@
+ENCODER_ENABLE = yes
+HAPTIC_ENABLE = yes
+HAPTIC_DRIVER = SOLENOID
+COMBO_ENABLE = yes
+VPATH += keyboards/gboards/
