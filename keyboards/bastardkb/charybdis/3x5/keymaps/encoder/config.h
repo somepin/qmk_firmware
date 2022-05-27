@@ -22,8 +22,10 @@
 #define TAPPING_TERM 200
 
 // Haptic Feedback
+#ifdef HAPTIC_ENABLE
 #define SOLENOID_PIN GP27
 #define SOLENOID_DEFAULT_BUZZ 0
+#endif
 
 /** Define encoder pads. 
  * \brief Encoder pads wired to MISO and MOSI
