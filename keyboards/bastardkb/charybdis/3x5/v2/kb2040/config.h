@@ -23,9 +23,11 @@
 #define MATRIX_COL_PINS \
   { GP28, GP10, GP6, GP7, GP8 }
 
-/* Handedness. */
+/* Handedness & split settings. */
 #define SPLIT_HAND_PIN GP3
 #define SPLIT_HAND_PIN_LOW_IS_LEFT  // High -> right, Low -> left.
+#define SPLIT_USB_DETECT
+#define SPLIT_USB_TIMEOUT 2000
 
 /* serial.c configuration (for split keyboard). */
 #define SERIAL_PIO_USE_PIO1
