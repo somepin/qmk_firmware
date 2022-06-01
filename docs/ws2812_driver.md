@@ -167,7 +167,7 @@ Targeting Rasperry Pi RP2040 boards only where WS2812 support is offloaded to an
 To configure it, add this to your rules.mk:
 
 ```make
-WS2812_DRIVER = pio
+WS2812_DRIVER = vendor
 ```
 
 Configure the hardware via your config.h:

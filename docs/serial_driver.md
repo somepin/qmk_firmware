@@ -86,10 +86,10 @@ To use the Half-duplex driver follow these steps to activate it. If you target t
 SERIAL_DRIVER = usart
 ```
 
-2. (RP2040 PIO only!) Change the `SERIAL_DRIVER` to `pio` in your keyboards `rules.mk` file:
+2. (RP2040 PIO only!) Change the `SERIAL_DRIVER` to `vendor` in your keyboards `rules.mk` file:
 
 ```make
-SERIAL_DRIVER = pio
+SERIAL_DRIVER = vendor
 ```
 
 3. Configure the hardware of your keyboard via the `config.h` file:
@@ -143,10 +143,10 @@ To use the Full-duplex driver follow these steps to activate it. If you target t
 SERIAL_DRIVER = usart
 ```
 
-2. (RP2040 PIO only!) Change the `SERIAL_DRIVER` to `pio` in your keyboards `rules.mk` file:
+2. (RP2040 PIO only!) Change the `SERIAL_DRIVER` to `vendor` in your keyboards `rules.mk` file:
 
 ```make
-SERIAL_DRIVER = pio
+SERIAL_DRIVER = vendor
 ```
 
 3. Configure the hardware of your keyboard via the `config.h` file:

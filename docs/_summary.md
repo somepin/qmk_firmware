@@ -88,7 +88,6 @@
     * [Swap Hands](feature_swap_hands.md)
     * [Tap Dance](feature_tap_dance.md)
     * [Tap-Hold Configuration](tap_hold.md)
-    * [Terminal](feature_terminal.md)
     * [Unicode](feature_unicode.md)
     * [Userspace](feature_userspace.md)
     * [WPM Calculation](feature_wpm.md)
@@ -133,7 +132,7 @@
   * Breaking Changes
     * [Overview](breaking_changes.md)
     * [My Pull Request Was Flagged](breaking_changes_instructions.md)
-    * [Most Recent ChangeLog](ChangeLog/20220226.md "QMK v0.16.0 - 2022 Feb 26")
+    * [Most Recent ChangeLog](ChangeLog/20220528.md "QMK v0.17.0 - 2022 May 28")
     * [Past Breaking Changes](breaking_changes_history.md)
 
   * C Development

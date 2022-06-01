@@ -30,8 +30,9 @@ FORMAT = ihex
 # Optimization level, can be [0, 1, 2, 3, s].
 OPT ?= s
 
-# Compiler flag to set the C Standard level.
+# Compiler flag to set the C and C++ language standard level
 CSTANDARD = -std=gnu11
+CXXSTANDARD = -std=gnu++14
 
 # Speed up recompilations by opt-in usage of ccache
 USE_CCACHE ?= no
