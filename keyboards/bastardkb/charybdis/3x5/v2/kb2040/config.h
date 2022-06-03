@@ -27,7 +27,8 @@
 #define SPLIT_HAND_PIN GP3
 #define SPLIT_HAND_PIN_LOW_IS_LEFT  // High -> right, Low -> left.
 #define SPLIT_USB_DETECT
-#define SPLIT_USB_TIMEOUT 2000
+#define SPLIT_USB_TIMEOUT 10000
+#define SPLIT_USB_TIMEOUT_POLL 100
 
 /* serial.c configuration (for split keyboard). */
 #define SERIAL_PIO_USE_PIO1
