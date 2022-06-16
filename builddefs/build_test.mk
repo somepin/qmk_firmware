@@ -4,6 +4,8 @@ endif
 
 .DEFAULT_GOAL := all
 
+OPT = g
+
 include paths.mk
 include $(BUILDDEFS_PATH)/message.mk
 
@@ -40,7 +42,7 @@ VPATH += \
 
 all: elf
 
-VPATH += $(COMMON_VPATH)
+VPATH += $(TEST_PATH) $(COMMON_VPATH)
 PLATFORM:=TEST
 PLATFORM_KEY:=test
 BOOTLOADER_TYPE:=none

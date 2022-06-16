@@ -75,6 +75,7 @@
 
   * Software Features
     * [Auto Shift](feature_auto_shift.md)
+    * [Caps Word](feature_caps_word.md)
     * [Combos](feature_combo.md)
     * [Debounce API](feature_debounce_type.md)
     * [Key Lock](feature_key_lock.md)
@@ -87,14 +88,14 @@
     * [Swap Hands](feature_swap_hands.md)
     * [Tap Dance](feature_tap_dance.md)
     * [Tap-Hold Configuration](tap_hold.md)
-    * [Terminal](feature_terminal.md)
     * [Unicode](feature_unicode.md)
     * [Userspace](feature_userspace.md)
     * [WPM Calculation](feature_wpm.md)
 
   * Hardware Features
     * Displays
-      * [HD44780 LCD Controller](feature_hd44780.md)
+      * [Quantum Painter](quantum_painter.md)
+      * [HD44780 LCD Driver](feature_hd44780.md)
       * [ST7565 LCD Driver](feature_st7565.md)
       * [OLED Driver](feature_oled_driver.md)
     * Lighting
@@ -131,7 +132,7 @@
   * Breaking Changes
     * [Overview](breaking_changes.md)
     * [My Pull Request Was Flagged](breaking_changes_instructions.md)
-    * [Most Recent ChangeLog](ChangeLog/20220226.md "QMK v0.16.0 - 2022 Feb 26")
+    * [Most Recent ChangeLog](ChangeLog/20220528.md "QMK v0.17.0 - 2022 May 28")
     * [Past Breaking Changes](breaking_changes_history.md)
 
   * C Development
