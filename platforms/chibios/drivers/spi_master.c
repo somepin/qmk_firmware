@@ -20,19 +20,8 @@
 
 static pin_t currentSlavePin = NO_PIN;
 
-#if defined(K20x) || defined(KL2x)
+#if defined(K20x) || defined(KL2x) || defined(RP2040)
 static SPIConfig spiConfig = {NULL, 0, 0, 0};
-#elif defined(MCU_RP)
-// clang-format off
-// Motorola frame format and 8bit transfer data size.
-static SPIConfig spiConfig = {
-    .end_cb = NULL,
-    .sspad = 0UL,
-    .ssport = 0UL,
-    .SSPCPSR = 0UL,
-    .SSPCR0 = SPI_SSPCR0_FRF_MOTOROLA | SPI_SSPCR0_DSS_8BIT
-};
-// clang-format on
 #else
 static SPIConfig spiConfig = {false, NULL, 0, 0, 0, 0};
 #endif
@@ -48,12 +37,7 @@ __attribute__((weak)) void spi_init(void) {
         setPinInput(SPI_MISO_PIN);
 
         chThdSleepMilliseconds(10);
-
-#if defined(MCU_RP)
-        palSetLineMode(SPI_SCK_PIN, PAL_MODE_ALTERNATE_SPI | PAL_RP_PAD_DRIVE4);
-        palSetLineMode(SPI_MOSI_PIN, PAL_MODE_ALTERNATE_SPI | PAL_RP_PAD_DRIVE4);
-        palSetLineMode(SPI_MISO_PIN, PAL_MODE_ALTERNATE_SPI | PAL_RP_PAD_DRIVE4);
-#elif defined(USE_GPIOV1)
+#if defined(USE_GPIOV1)
         palSetPadMode(PAL_PORT(SPI_SCK_PIN), PAL_PAD(SPI_SCK_PIN), SPI_SCK_PAL_MODE);
         palSetPadMode(PAL_PORT(SPI_MOSI_PIN), PAL_PAD(SPI_MOSI_PIN), SPI_MOSI_PAL_MODE);
         palSetPadMode(PAL_PORT(SPI_MISO_PIN), PAL_PAD(SPI_MISO_PIN), SPI_MISO_PAL_MODE);
@@ -188,6 +172,8 @@ bool spi_start(pin_t slavePin, bool lsbFirst, uint8_t mode, uint16_t divisor) {
         osalDbgAssert(lsbFirst == false, "RP2040s PrimeCell SPI implementation does not support sending LSB first.");
     }
 
+    // Motorola frame format and 8bit transfer data size.
+    spiConfig.SSPCR0 = SPI_SSPCR0_FRF_MOTOROLA | SPI_SSPCR0_DSS_8BIT;
     // Serial output clock = (ck_sys or ck_peri) / (SSPCPSR->CPSDVSR * (1 +
     // SSPCR0->SCR)). SCR is always set to zero, as QMK SPI API expects the
     // passed divisor to be the only value to divide the input clock by.

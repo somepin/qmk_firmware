@@ -32,6 +32,7 @@
 #include "usb_main.h"
 
 #include "host.h"
+#include "chibios_config.h"
 #include "debug.h"
 #include "suspend.h"
 #ifdef SLEEP_LED_ENABLE
@@ -92,9 +93,7 @@ uint8_t extra_report_blank[3] = {0};
  */
 
 /* USB Low Level driver specific endpoint fields */
-#if defined(MCU_RP)
-#    define usb_lld_endpoint_fields
-#else
+#if !defined(usb_lld_endpoint_fields)
 #    define usb_lld_endpoint_fields   \
         2,        /* IN multiplier */ \
             NULL, /* SETUP buffer (not a SETUP endpoint) */

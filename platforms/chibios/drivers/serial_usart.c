@@ -173,7 +173,7 @@ __attribute__((weak)) void usart_init(void) {
 #        if defined(USART_REMAP)
     USART_REMAP;
 #        endif
-#    elif defined(MCU_RP) /* Raspberry PI MCUs */
+#    elif defined(MCU_RP) /* Raspberry Pi MCUs */
 #        error Half-duplex with the SIO driver is not supported due to hardware limitations on the RP2040, switch to the PIO driver which has Half-duplex support.
 #    else
 #        pragma message "usart_init: MCU Familiy not supported by default, please supply your own init code by implementing usart_init() in your keyboard files."
@@ -198,7 +198,7 @@ __attribute__((weak)) void usart_init(void) {
 #        if defined(USART_REMAP)
     USART_REMAP;
 #        endif
-#    elif defined(MCU_RP) /* Raspberry PI MCUs */
+#    elif defined(MCU_RP) /* Raspberry Pi MCUs */
     palSetLineMode(SERIAL_USART_TX_PIN, PAL_MODE_ALTERNATE_UART);
     palSetLineMode(SERIAL_USART_RX_PIN, PAL_MODE_ALTERNATE_UART);
 #    else
