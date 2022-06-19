@@ -26,16 +26,11 @@
 /* Handedness & split settings. */
 #define SPLIT_HAND_PIN GP3
 #define SPLIT_HAND_PIN_LOW_IS_LEFT  // High -> right, Low -> left.
-#define SPLIT_USB_DETECT
-#define SPLIT_USB_TIMEOUT 10000
-#define SPLIT_USB_TIMEOUT_POLL 100
+#define USB_VBUS_PIN GP1
 
 /* serial.c configuration (for split keyboard). */
 #define SERIAL_PIO_USE_PIO1
-#define SERIAL_USART_FULL_DUPLEX
 #define SERIAL_USART_TX_PIN GP29
-#define SERIAL_USART_RX_PIN GP1
-#define SERIAL_USART_PIN_SWAP
 #define SERIAL_USART_SPEED 460800 // gotta go fast
 
 /* RGB settings. */
