@@ -23,9 +23,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [3] = LAYOUT_fck_stabs(
-        KC_TRNS,          KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_HOME, KC_UP,   KC_PGUP,   KC_NO,    KC_TRNS,
-        KC_TRNS,          KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_NO,   KC_NO,   KC_LEFT, KC_DOWN, KC_RGHT,   KC_NO,    KC_TRNS,
-        KC_TRNS, KC_TRNS, C(KC_A), C(KC_X), C(KC_C), C(KC_V), KC_NO,   KC_NO,   KC_END,  KC_NO,   KC_PGDN,   KC_TRNS,
+        KC_TRNS,          KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,     KC_NO,    KC_TRNS,
+        KC_TRNS,          KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_NO,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,   KC_NO,    KC_TRNS,
+        KC_TRNS, KC_TRNS, C(KC_A), C(KC_X), C(KC_C), C(KC_V), KC_NO,   KC_HOME, KC_PGDN, KC_PGUP, KC_END,    KC_TRNS,
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
     ),
 };
