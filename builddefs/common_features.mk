@@ -92,10 +92,29 @@ ifeq ($(MUSIC_ENABLE), yes)
     SRC += $(QUANTUM_DIR)/process_keycode/process_music.c
 endif
 
+VALID_STENO_PROTOCOL_TYPES := geminipr txbolt all
+STENO_PROTOCOL ?= all
 ifeq ($(strip $(STENO_ENABLE)), yes)
-    OPT_DEFS += -DSTENO_ENABLE
-    VIRTSER_ENABLE ?= yes
-    SRC += $(QUANTUM_DIR)/process_keycode/process_steno.c
+    ifeq ($(filter $(STENO_PROTOCOL),$(VALID_STENO_PROTOCOL_TYPES)),)
+        $(call CATASTROPHIC_ERROR,Invalid STENO_PROTOCOL,STENO_PROTOCOL="$(STENO_PROTOCOL)" is not a valid stenography protocol)
+    else
+        OPT_DEFS += -DSTENO_ENABLE
+        VIRTSER_ENABLE ?= yes
+
+        ifeq ($(strip $(STENO_PROTOCOL)), geminipr)
+            OPT_DEFS += -DSTENO_ENABLE_GEMINI
+        endif
+        ifeq ($(strip $(STENO_PROTOCOL)), txbolt)
+            OPT_DEFS += -DSTENO_ENABLE_BOLT
+        endif
+        ifeq ($(strip $(STENO_PROTOCOL)), all)
+            OPT_DEFS += -DSTENO_ENABLE_ALL
+            OPT_DEFS += -DSTENO_ENABLE_GEMINI
+            OPT_DEFS += -DSTENO_ENABLE_BOLT
+        endif
+
+        SRC += $(QUANTUM_DIR)/process_keycode/process_steno.c
+    endif
 endif
 
 ifeq ($(strip $(VIRTSER_ENABLE)), yes)
@@ -154,7 +173,7 @@ ifeq ($(strip $(QUANTUM_PAINTER_ENABLE)), yes)
     include $(QUANTUM_DIR)/painter/rules.mk
 endif
 
-VALID_EEPROM_DRIVER_TYPES := vendor custom transient i2c spi
+VALID_EEPROM_DRIVER_TYPES := vendor custom transient i2c spi wear_leveling
 EEPROM_DRIVER ?= vendor
 ifeq ($(filter $(EEPROM_DRIVER),$(VALID_EEPROM_DRIVER_TYPES)),)
   $(call CATASTROPHIC_ERROR,Invalid EEPROM_DRIVER,EEPROM_DRIVER="$(EEPROM_DRIVER)" is not a valid EEPROM driver)
@@ -167,6 +186,10 @@ else
     # Custom EEPROM implementation -- only needs to implement init/erase/read_block/write_block
     OPT_DEFS += -DEEPROM_DRIVER -DEEPROM_CUSTOM
     SRC += eeprom_driver.c
+  else ifeq ($(strip $(EEPROM_DRIVER)), wear_leveling)
+    # Wear-leveling EEPROM implementation
+    OPT_DEFS += -DEEPROM_DRIVER -DEEPROM_WEAR_LEVELING
+    SRC += eeprom_driver.c eeprom_wear_leveling.c
   else ifeq ($(strip $(EEPROM_DRIVER)), i2c)
     # External I2C EEPROM implementation
     OPT_DEFS += -DEEPROM_DRIVER -DEEPROM_I2C
@@ -218,17 +241,47 @@ else
   endif
 endif
 
+VALID_WEAR_LEVELING_DRIVER_TYPES := custom embedded_flash spi_flash legacy
+WEAR_LEVELING_DRIVER ?= none
+ifneq ($(strip $(WEAR_LEVELING_DRIVER)),none)
+  ifeq ($(filter $(WEAR_LEVELING_DRIVER),$(VALID_WEAR_LEVELING_DRIVER_TYPES)),)
+    $(call CATASTROPHIC_ERROR,Invalid WEAR_LEVELING_DRIVER,WEAR_LEVELING_DRIVER="$(WEAR_LEVELING_DRIVER)" is not a valid wear leveling driver)
+  else
+    FNV_ENABLE := yes
+    OPT_DEFS += -DWEAR_LEVELING_ENABLE
+    OPT_DEFS += -DWEAR_LEVELING_$(strip $(shell echo $(WEAR_LEVELING_DRIVER) | tr '[:lower:]' '[:upper:]'))
+    COMMON_VPATH += $(PLATFORM_PATH)/$(PLATFORM_KEY)/$(DRIVER_DIR)/wear_leveling
+    COMMON_VPATH += $(DRIVER_PATH)/wear_leveling
+    COMMON_VPATH += $(QUANTUM_DIR)/wear_leveling
+    SRC += wear_leveling.c
+    ifeq ($(strip $(WEAR_LEVELING_DRIVER)), embedded_flash)
+      OPT_DEFS += -DHAL_USE_EFL
+      SRC += wear_leveling_efl.c
+      POST_CONFIG_H += $(PLATFORM_PATH)/$(PLATFORM_KEY)/$(DRIVER_DIR)/wear_leveling/wear_leveling_efl_config.h
+    else ifeq ($(strip $(WEAR_LEVELING_DRIVER)), spi_flash)
+      FLASH_DRIVER := spi
+      SRC += wear_leveling_flash_spi.c
+      POST_CONFIG_H += $(DRIVER_PATH)/wear_leveling/wear_leveling_flash_spi_config.h
+    else ifeq ($(strip $(WEAR_LEVELING_DRIVER)), legacy)
+      COMMON_VPATH += $(PLATFORM_PATH)/$(PLATFORM_KEY)/$(DRIVER_DIR)/flash
+      SRC += flash_stm32.c wear_leveling_legacy.c
+      POST_CONFIG_H += $(PLATFORM_PATH)/$(PLATFORM_KEY)/$(DRIVER_DIR)/wear_leveling/wear_leveling_legacy_config.h
+    endif
+  endif
+endif
+
 VALID_FLASH_DRIVER_TYPES := spi
-FLASH_DRIVER ?= no
-ifneq ($(strip $(FLASH_DRIVER)), no)
+FLASH_DRIVER ?= none
+ifneq ($(strip $(FLASH_DRIVER)), none)
     ifeq ($(filter $(FLASH_DRIVER),$(VALID_FLASH_DRIVER_TYPES)),)
-        $(error FLASH_DRIVER="$(FLASH_DRIVER)" is not a valid FLASH driver)
+        $(call CATASTROPHIC_ERROR,Invalid FLASH_DRIVER,FLASH_DRIVER="$(FLASH_DRIVER)" is not a valid flash driver)
     else
         OPT_DEFS += -DFLASH_ENABLE
-        ifeq ($(strip $(FLASH_DRIVER)), spi)
+        ifeq ($(strip $(FLASH_DRIVER)),spi)
             OPT_DEFS += -DFLASH_DRIVER -DFLASH_SPI
             COMMON_VPATH += $(DRIVER_PATH)/flash
             SRC += flash_spi.c
+            QUANTUM_LIB_SRC += spi_master.c
         endif
     endif
 endif
@@ -494,7 +547,7 @@ ifeq ($(strip $(BACKLIGHT_ENABLE)), yes)
     endif
 endif
 
-VALID_WS2812_DRIVER_TYPES := bitbang pwm spi i2c
+VALID_WS2812_DRIVER_TYPES := bitbang pwm spi i2c vendor
 
 WS2812_DRIVER ?= bitbang
 ifeq ($(strip $(WS2812_DRIVER_REQUIRED)), yes)
@@ -583,6 +636,14 @@ ifneq ($(strip $(DEBOUNCE_TYPE)), custom)
     QUANTUM_SRC += $(QUANTUM_DIR)/debounce/$(strip $(DEBOUNCE_TYPE)).c
 endif
 
+
+VALID_SERIAL_DRIVER_TYPES := bitbang usart vendor
+
+SERIAL_DRIVER ?= bitbang
+ifeq ($(filter $(SERIAL_DRIVER),$(VALID_SERIAL_DRIVER_TYPES)),)
+    $(call CATASTROPHIC_ERROR,Invalid SERIAL_DRIVER,SERIAL_DRIVER="$(SERIAL_DRIVER)" is not a valid SERIAL driver)
+endif
+
 ifeq ($(strip $(SPLIT_KEYBOARD)), yes)
     POST_CONFIG_H += $(QUANTUM_DIR)/split_common/post_config.h
     OPT_DEFS += -DSPLIT_KEYBOARD
@@ -607,11 +668,11 @@ ifeq ($(strip $(SPLIT_KEYBOARD)), yes)
             endif
         endif
 
-        SERIAL_DRIVER ?= bitbang
         OPT_DEFS += -DSERIAL_DRIVER_$(strip $(shell echo $(SERIAL_DRIVER) | tr '[:lower:]' '[:upper:]'))
         ifeq ($(strip $(SERIAL_DRIVER)), bitbang)
             QUANTUM_LIB_SRC += serial.c
         else
+            QUANTUM_LIB_SRC += serial_protocol.c
             QUANTUM_LIB_SRC += serial_$(strip $(SERIAL_DRIVER)).c
         endif
     endif
@@ -621,6 +682,12 @@ endif
 ifeq ($(strip $(CRC_ENABLE)), yes)
     OPT_DEFS += -DCRC_ENABLE
     SRC += crc.c
+endif
+
+ifeq ($(strip $(FNV_ENABLE)), yes)
+    OPT_DEFS += -DFNV_ENABLE
+    VPATH += $(LIB_PATH)/fnv
+    SRC += qmk_fnv_type_validation.c hash_32a.c hash_64a.c
 endif
 
 ifeq ($(strip $(HAPTIC_ENABLE)),yes)

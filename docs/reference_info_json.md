@@ -89,7 +89,7 @@ Example:
 
 Direct pins are when you connect one side of the switch to GND and the other side to a GPIO pin on your MCU. No diode is required, but there is a 1:1 mapping between switches and pins.
 
-When specifying direct pins you need to arrange them in nested arrays. The outer array consists of rows, while the inner array is a text string corresponding to a pin. You can use `null` to indicate an empty spot in the matrix.
+When specifying direct pins you need to arrange them in nested arrays. The outer array consists of rows, while the inner array uses text strings to identify the pins used in each row. You can use `null` to indicate an empty spot in the matrix.
 
 Example:
 
@@ -187,3 +187,39 @@ Example:
 ```
 
 The device version is a BCD (binary coded decimal) value, in the format `MMmr`, so the below value would look like `0x0100` in the generated code. This also means the maximum valid values for each part are `99.9.9`, despite it being a hexadecimal value under the hood.
+
+### Encoders
+
+This section controls the basic [rotary encoder](feature_encoders.md) support.
+
+The following items can be set. Not every value is required.
+
+* `pin_a`
+  * __Required__. A pad definition
+* `pin_b`
+  * __Required__. B pad definition
+* `resolution`
+  * How many pulses the encoder registers between each detent
+
+Examples:
+
+```json
+{
+    "encoder": {
+        "rotary": [
+            { "pin_a": "B5", "pin_b": "A2" }
+        ]
+    }
+}
+```
+
+```json
+{
+    "encoder": {
+        "rotary": [
+            { "pin_a": "B5", "pin_b": "A2", "resolution": 4 }
+            { "pin_a": "B6", "pin_b": "A3", "resolution": 2 }
+        ]
+    }
+}
+```
