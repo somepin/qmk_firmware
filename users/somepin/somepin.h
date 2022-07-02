@@ -7,13 +7,24 @@ enum userspace_layers {
     _BASE = 0,
     _QWERTY,
     _GAMING,
+    _MOUSE,
     _NAV,
     _NAV_NUM,
     _NUMPD,
-    _FN,
     _LOWER,
     _RAISE,
+    _FN,
     _ADJUST,
+};
+
+enum userspace_keycodes {
+    // QWERTY keysmash mode
+    SMASH = SAFE_RANGE,
+    // Oneshot mods
+    OS_ALT,
+    OS_CTRL,
+    OS_GUI,
+    OS_SHFT,
 };
 
 void          matrix_init_keymap(void);
@@ -23,6 +34,8 @@ layer_state_t layer_state_set_keymap(layer_state_t state);
 
 #define LOWER  LT(_LOWER, KC_BSPC)
 #define RAISE  LT(_RAISE, KC_SPC)
+#define MO_LWR MO(_LOWER)
+#define MO_RSE MO(_RAISE)
 
 // QAZ/QAL modtaps
 #define KC_SZ  LSFT_T(KC_Z)
