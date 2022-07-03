@@ -48,6 +48,8 @@
 // Enable all animations on KB2040 since they have plenty of memory
 // available for it.
 #ifdef RGB_MATRIX_ENABLE
+#undef  RGB_MATRIX_MAXIMUM_BRIGHTNESS
+#define RGB_MATRIX_MAXIMUM_BRIGHTNESS 25
 #define RGB_MATRIX_FRAMEBUFFER_EFFECTS
 #define RGB_MATRIX_KEYPRESSES
 #define ENABLE_RGB_MATRIX_ALPHAS_MODS

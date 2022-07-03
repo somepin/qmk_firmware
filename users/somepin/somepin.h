@@ -18,8 +18,11 @@ enum userspace_layers {
 };
 
 enum userspace_keycodes {
-    // QWERTY keysmash mode
+#ifndef NO_CHARYBDIS_KEYCODES
+    SMASH = CHARYBDIS_SAFE_RANGE,
+#else
     SMASH = SAFE_RANGE,
+#endif // !NO_CHARYBDIS_KEYCODES
     // Oneshot mods
     OS_ALT,
     OS_CTRL,
