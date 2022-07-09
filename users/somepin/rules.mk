@@ -1,10 +1,10 @@
 SRC += somepin.c
 
-ifneq ($(PLATFORM),CHIBIOS)
-    ifneq ($(strip $(LTO_SUPPORTED)), no)
-        LTO_ENABLE = yes
-    endif
-endif
+# ifneq ($(PLATFORM),CHIBIOS)
+#     ifneq ($(strip $(LTO_SUPPORTED)), no)
+#         LTO_ENABLE = yes
+#     endif
+# endif
 
 ifeq ($(strip $(KEYBOARD)), somepin/qal)
 COMBO_ENABLE = yes

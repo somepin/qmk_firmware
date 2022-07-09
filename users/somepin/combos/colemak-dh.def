@@ -2,6 +2,9 @@
 // Left hand
 COMB(wfEsc,      KC_ESC,          KC_W, KC_F)
 COMB(fpTab,      KC_TAB,          KC_F, KC_P)
+COMB(zxCut,      C(KC_X),         KC_Z, KC_X)
+COMB(xcCopy,     C(KC_C),         KC_X, KC_C)
+COMB(cvPaste,    C(KC_V),         KC_C, KC_V)
 
 // Right hand
 COMB(luDel,      KC_DEL,          KC_L, KC_U)
