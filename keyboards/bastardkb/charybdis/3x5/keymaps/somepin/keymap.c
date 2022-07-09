@@ -46,7 +46,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_ESC,  KC_Q, KC_W, KC_E,   KC_R,   KC_T,        KC_Y,        KC_UP,   KC_I,    KC_ESC,
         KC_TAB,  KC_A, KC_S, KC_D,   KC_F,   KC_G,        KC_LEFT,     KC_DOWN, KC_RGHT, KC_TAB,
         KC_LSFT, KC_Z, KC_X, KC_C,   KC_V,   KC_B,        KC_N,        KC_M,    KC_COMM, KC_RSFT,
-                            KC_NO, KC_SPC, KC_SPC,        TG(_GAMING), KC_NO
+                          XXXXXXX, KC_SPC, KC_SPC,        TG(_GAMING), XXXXXXX
     ),
 
     [_MOUSE] = LAYOUT_base_wrapper(
@@ -63,14 +63,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_RAISE] = LAYOUT_base_wrapper(
         KC_EXLM,  KC_AT,    KC_HASH,  KC_DLR,   KC_PERC,           KC_CIRC,  KC_AMPR,    KC_ASTR,    KC_INS,   KC_DEL,
-        KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  KC_TILD,           KC_GRV,   OS_SHFT,    OS_CTRL,    OS_ALT,   OS_GUI,
+        KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  KC_TILD,           XXXXXXX,  OS_SHFT,    OS_CTRL,    OS_ALT,   OS_GUI,
         KC_UNDS,  KC_PLUS,  KC_LBRC,  KC_RBRC,  KC_PIPE,           C(KC_L),  C(KC_PGDN), C(KC_PGUP), C(KC_W),  C(KC_TAB)
     ),
 
     [_FN] = LAYOUT_base_wrapper(
-        KC_F1,         KC_F2,      KC_F3,      KC_F4,         KC_F5,      KC_F8,      KC_F9,      KC_F10,   KC_F11,     KC_F12,  
-        OS_GUI,        OS_ALT,     OS_CTRL,    OS_SHFT,       KC_F6,      KC_F7,      OS_SHFT,    OS_CTRL,  OS_ALT,     OS_GUI,
-        LCAG(KC_LEFT), G(KC_LEFT), G(KC_RGHT), LCAG(KC_RGHT), A(KC_TAB),  S(KC_LEFT), S(KC_DOWN), S(KC_UP), S(KC_RGHT), C(KC_A)
+        KC_F1,         KC_F2,      KC_F3,      KC_F4,         KC_F5,            KC_F8,      KC_F9,      KC_F10,   KC_F11,     KC_F12,  
+        OS_GUI,        OS_ALT,     OS_CTRL,    OS_SHFT,       KC_F6,            KC_F7,      OS_SHFT,    OS_CTRL,  OS_ALT,     OS_GUI,
+        LCAG(KC_LEFT), G(KC_LEFT), G(KC_RGHT), LCAG(KC_RGHT), XXXXXXX,          S(KC_LEFT), S(KC_DOWN), S(KC_UP), S(KC_RGHT), C(KC_A)
     ),
 
     [_ADJUST] = LAYOUT_base_wrapper(
