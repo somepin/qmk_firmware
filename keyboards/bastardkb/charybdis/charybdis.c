@@ -18,6 +18,8 @@
  */
 
 #include "charybdis.h"
+#include "transactions.h"
+#include <string.h>
 
 #ifdef CONSOLE_ENABLE
 #    include "print.h"
@@ -174,9 +176,24 @@ void charybdis_set_pointer_dragscroll_enabled(bool enable) {
     maybe_update_pointing_device_cpi(&g_charybdis_config);
 }
 
-void pointing_device_init_kb(void) {
-    maybe_update_pointing_device_cpi(&g_charybdis_config);
-}
+#    ifndef CONSTRAIN_HID
+#        define CONSTRAIN_HID(value) ((value) < XY_REPORT_MIN ? XY_REPORT_MIN : ((value) > XY_REPORT_MAX ? XY_REPORT_MAX : (value)))
+#    endif  // !CONSTRAIN_HID
+
+/**
+ * \brief Add optional acceleration effect.
+ *
+ * If `CHARYBDIS_ENABLE_POINTER_ACCELERATION` is defined, add a simple and naive
+ * acceleration effect to the provided value.  Return the value unchanged
+ * otherwise.
+ */
+#    ifndef DISPLACEMENT_WITH_ACCELERATION
+#        ifdef CHARYBDIS_POINTER_ACCELERATION_ENABLE
+#            define DISPLACEMENT_WITH_ACCELERATION(d) (CONSTRAIN_HID(d > 0 ? d * d / CHARYBDIS_POINTER_ACCELERATION_FACTOR + d : -d * d / CHARYBDIS_POINTER_ACCELERATION_FACTOR + d))
+#        else  // !CHARYBDIS_POINTER_ACCELERATION_ENABLE
+#            define DISPLACEMENT_WITH_ACCELERATION(d) (d)
+#        endif  // CHARYBDIS_POINTER_ACCELERATION_ENABLE
+#    endif      // !DISPLACEMENT_WITH_ACCELERATION
 
 /**
  * \brief Augment the pointing device behavior.
@@ -331,18 +348,49 @@ void matrix_init_kb(void) {
     read_charybdis_config_from_eeprom(&g_charybdis_config);
     matrix_init_user();
 }
-#endif // POINTING_DEVICE_ENABLE
 
-#if defined(KEYBOARD_charybdis_3x5_blackpill) || defined(KEYBOARD_charybdis_4x6_blackpill)
-void keyboard_pre_init_kb(void) {
-    setPinInputHigh(A0);
-    keyboard_pre_init_user();
-}
-
-void matrix_scan_kb(void) {
-    if (!readPin(A0)) {
-        reset_keyboard();
+#    ifdef CHARYBDIS_CONFIG_SYNC
+void charybdis_config_sync_handler(uint8_t initiator2target_buffer_size, const void* initiator2target_buffer, uint8_t target2initiator_buffer_size, void* target2initiator_buffer) {
+    if (initiator2target_buffer_size == sizeof(g_charybdis_config)) {
+        memcpy(&g_charybdis_config, initiator2target_buffer, sizeof(g_charybdis_config));
     }
-    matrix_scan_user();
 }
-#endif // KEYBOARD_charybdis_3x5_blackpill || KEYBOARD_charybdis_4x6_blackpill
+#    endif
+
+void keyboard_post_init_kb(void) {
+    maybe_update_pointing_device_cpi(&g_charybdis_config);
+#    ifdef CHARYBDIS_CONFIG_SYNC
+    transaction_register_rpc(RPC_ID_KB_CONFIG_SYNC, charybdis_config_sync_handler);
+#    endif
+    keyboard_post_init_user();
+}
+
+#    ifdef CHARYBDIS_CONFIG_SYNC
+void housekeeping_task_kb(void) {
+    if (is_keyboard_master()) {
+        // Keep track of the last state, so that we can tell if we need to propagate to slave
+        static charybdis_config_t last_charybdis_config = {0};
+        static uint32_t           last_sync             = 0;
+        bool                      needs_sync            = false;
+
+        // Check if the state values are different
+        if (memcmp(&g_charybdis_config, &last_charybdis_config, sizeof(g_charybdis_config))) {
+            needs_sync = true;
+            memcpy(&last_charybdis_config, &g_charybdis_config, sizeof(g_charybdis_config));
+        }
+        // Send to slave every 500ms regardless of state change
+        if (timer_elapsed32(last_sync) > 500) {
+            needs_sync = true;
+        }
+
+        // Perform the sync if requested
+        if (needs_sync) {
+            if (transaction_rpc_send(RPC_ID_KB_CONFIG_SYNC, sizeof(g_charybdis_config), &g_charybdis_config)) {
+                last_sync = timer_read32();
+            }
+        }
+    }
+    // no need for user function, is called already
+}
+#    endif // CHARYBDIS_CONFIG_SYNC
+#endif  // POINTING_DEVICE_ENABLE
