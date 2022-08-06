@@ -18,11 +18,11 @@ enum userspace_layers {
 };
 
 enum userspace_keycodes {
-#ifndef NO_CHARYBDIS_KEYCODES
-    SMASH = CHARYBDIS_SAFE_RANGE,
-#else
+// #ifndef NO_CHARYBDIS_KEYCODES
+//     SMASH = CHARYBDIS_SAFE_RANGE,
+// #else
     SMASH = SAFE_RANGE,
-#endif // !NO_CHARYBDIS_KEYCODES
+// #endif // !NO_CHARYBDIS_KEYCODES
     // Oneshot mods
     OS_ALT,
     OS_CTRL,
@@ -39,6 +39,10 @@ layer_state_t layer_state_set_keymap(layer_state_t state);
 #define RAISE  LT(_RAISE, KC_SPC)
 #define MO_LWR MO(_LOWER)
 #define MO_RSE MO(_RAISE)
+#define GH_Z LT(_RAISE, KC_Z)
+#define QZ_X LT(_RAISE, KC_X)
+#define GH_X LT(_LOWER, KC_X)
+#define GH_DOT LT(_LOWER, KC_DOT)
 
 // QAZ/QAL modtaps
 #define KC_SZ  LSFT_T(KC_Z)

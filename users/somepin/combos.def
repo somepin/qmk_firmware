@@ -10,6 +10,10 @@
 #include "combos/alpha.def"
 #endif
 
+#if defined(COMBO_DICT_GHERKIN)
+#include "combos/gherkin.def"
+#endif
+
 // shared combos
 #if defined(MOUSEKEY_ENABLE)
 COMB(btn123,     KC_BTN3,         KC_BTN1, KC_BTN2)

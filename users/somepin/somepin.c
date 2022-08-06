@@ -10,6 +10,10 @@
 
 bool is_oneshot_cancel_key(uint16_t keycode) {
     switch (keycode) {
+    case QZ_X:
+    case GH_Z:
+    case GH_X:
+    case GH_DOT:
     case MO_LWR:
     case MO_RSE:
         return true;
@@ -20,6 +24,10 @@ bool is_oneshot_cancel_key(uint16_t keycode) {
 
 bool is_oneshot_ignored_key(uint16_t keycode) {
     switch (keycode) {
+    case QZ_X:
+    case GH_Z:
+    case GH_X:
+    case GH_DOT:
     case MO_LWR:
     case MO_RSE:
     case KC_LSFT:
