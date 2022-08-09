@@ -1,0 +1,6 @@
+#include "colemak-dh.def"
+
+COMB(xcZ,              KC_Z,            KC_X, KC_C)
+COMB(comDtSlsh,        KC_SLSH,         KC_COMM, KC_DOT)
+COMB(khSpc,            KC_SPC,          LT(_NAV_NUM, KC_K), KC_H)
+COMB(eqlLbrcMins,      KC_MINS,         KC_EQL, KC_LBRC)

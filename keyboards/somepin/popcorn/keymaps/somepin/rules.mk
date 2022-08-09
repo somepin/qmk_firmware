@@ -1,0 +1,5 @@
+SRC += oled.c
+COMBO_ENABLE = yes
+NKRO_ENABLE = yes
+OLED_ENABLE = yes
+OLED_DRIVER = SSD1306 

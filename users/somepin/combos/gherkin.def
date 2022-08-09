@@ -1,0 +1,3 @@
+#include "colemak-dh.def"
+
+COMB(khSpc,            KC_SPC,          KC_K, KC_H)

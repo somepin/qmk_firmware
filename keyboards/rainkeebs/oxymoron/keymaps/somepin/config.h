@@ -1,0 +1,2 @@
+#define COMBO_DICT_COLEMAK_DH
+#define NO_AUTO_SHIFT_ALPHA

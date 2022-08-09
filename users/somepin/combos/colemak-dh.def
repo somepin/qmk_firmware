@@ -1,0 +1,20 @@
+// Vim-Mode combos
+// Left hand
+COMB(wfEsc,      KC_ESC,          KC_W, KC_F)
+COMB(fpTab,      KC_TAB,          KC_F, KC_P)
+COMB(zxCut,      C(KC_X),         KC_Z, KC_X)
+COMB(xcCopy,     C(KC_C),         KC_X, KC_C)
+COMB(cvPaste,    C(KC_V),         KC_C, KC_V)
+
+// Right hand
+COMB(luDel,      KC_DEL,          KC_L, KC_U)
+COMB(uyBspc,     KC_BSPC,         KC_U, KC_Y)
+COMB(yQuotScln,  KC_SCLN,         KC_Y, KC_QUOT)
+COMB(khCol,      KC_COLN,         KC_K, KC_H)
+COMB(hCommEnt,   KC_ENT,          KC_H, KC_COMM)
+//COMB(comSDotSlsh, KC_SLSH,        KC_COMM, KC_SDT)
+COMB(comDotSlsh, KC_SLSH,         KC_COMM, KC_DOT)
+//COMB(comDotSlsh, KC_SLSH,         KC_COMM, GH_DOT)
+
+// Other
+COMB(qplScSlp,   KC_SLEP,         KC_Q, KC_P, KC_L, KC_QUOT)
