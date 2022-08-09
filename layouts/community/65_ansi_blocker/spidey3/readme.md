@@ -1,5 +1,4 @@
-/*
-Copyright 2017 Danny Nguyen <danny@hexwire.com>
+Copyright 2022 Joshua Diamond josh@windowoffire.com @spidey3
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -13,8 +12,3 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-#pragma once
-
-#include "config_common.h"
