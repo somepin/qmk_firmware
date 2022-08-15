@@ -11,7 +11,7 @@ enum layer_names {
 };
 
 enum my_keycodes {
-  SMASH = SAFE_RANGE,
+  SMASH = CHARYBDIS_SAFE_RANGE,
 };
 
 #define NV_COMM LT(_NAV, KC_COMM)

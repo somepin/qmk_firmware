@@ -24,7 +24,7 @@
       K01,     K02,    K03,        K04,        K05,           K06,        K07,    K08,    K09,    K0A,   \
       K11,     K12,    K13,        K14,        K15,           K16,        K17,    K18,    K19,    K1A,   \
       K21,     K22,    K23,        K24,        K25,           K26,        K27,    K28,    K29,    K2A,   \
-                   KC_BTN3, MO(_MOUSE),     MO_LWR,           MO_RSE,     KC_SPC                         \
+                   KC_BTN3,      LOWER, MO(_MOUSE),           KC_ENT,     RAISE                          \
   )
 #define LAYOUT_base_wrapper(...)       LAYOUT_charybdis_3x5_base(__VA_ARGS__)
 
@@ -32,13 +32,13 @@
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT_base_wrapper(
         ______________COLEMAK_MOD_DH_L1____________, ______________COLEMAK_MOD_DH_R1____________,
-        ______________COLEMAK_MOD_DH_L2____________, ______________COLEMAK_MOD_DH_R2____________,
+        ______________COLEMAK_DH_HRM_L2____________, ______________COLEMAK_DH_HRM_R2____________,
         ______________COLEMAK_MOD_DH_L3____________, ______________COLEMAK_MOD_DH_R3____________
     ),
 
     [_QWERTY] = LAYOUT_base_wrapper(
         _________________QWERTY_L1_________________, _________________QWERTY_R1_________________,
-        _________________QWERTY_L2_________________, _________________QWERTY_R2_________________,
+        _______________QWERTY_HRM_L2_______________, _______________QWERTY_HRM_R2_______________,
         _________________QWERTY_L3_________________, _________________QWERTY_R3_________________
     ),
 

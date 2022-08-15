@@ -17,7 +17,7 @@
 #pragma once
 
 #define COMBO_DICT_COLEMAK_DH
-#define ONESHOT_MOD_ENABLE
+// #define ONESHOT_MOD_ENABLE
 
 // Haptic Feedback
 #ifdef HAPTIC_ENABLE
