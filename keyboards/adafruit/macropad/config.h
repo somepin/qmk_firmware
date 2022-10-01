@@ -22,12 +22,6 @@
 #define MATRIX_ROWS 5
 #define MATRIX_COLS 3
 
-#define VENDOR_ID    0x239A
-#define PRODUCT_ID   0x0108
-#define DEVICE_VER   0x0001
-#define MANUFACTURER Adafruit
-#define PRODUCT      Macropad RP2040
-
 /* Keyboard Matrix Assignments */
 // clang-format off
 #define DIRECT_PINS { \
@@ -84,7 +78,7 @@
 
      /* RGB Defines */
 #    define RGB_DI_PIN GP19
-#    define DRIVER_LED_TOTAL 12
+#    define RGB_MATRIX_LED_COUNT 12
 #    define RGBLED_NUM 12
 
      /* Enable Framebuffer and keypress effects */

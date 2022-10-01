@@ -272,6 +272,9 @@ bool process_record_quantum(keyrecord_t *record) {
 #if defined(VIA_ENABLE)
             process_record_via(keycode, record) &&
 #endif
+#if defined(POINTING_DEVICE_ENABLE) && defined(POINTING_DEVICE_AUTO_MOUSE_ENABLE)
+            process_auto_mouse(keycode, record) &&
+#endif
             process_record_kb(keycode, record) &&
 #if defined(SECURE_ENABLE)
             process_secure(keycode, record) &&
@@ -336,6 +339,9 @@ bool process_record_quantum(keyrecord_t *record) {
 #ifdef PROGRAMMABLE_BUTTON_ENABLE
             process_programmable_button(keycode, record) &&
 #endif
+#ifdef AUTOCORRECT_ENABLE
+            process_autocorrect(keycode, record) &&
+#endif
             true)) {
         return false;
     }
@@ -361,8 +367,10 @@ bool process_record_quantum(keyrecord_t *record) {
 #endif
                 return false;
             case QK_CLEAR_EEPROM:
+#ifdef NO_RESET
                 eeconfig_init();
-#ifndef NO_RESET
+#else
+                eeconfig_disable();
                 soft_reset_keyboard();
 #endif
                 return false;
