@@ -47,7 +47,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_NAV] = LAYOUT_charybdis_3x5(
     DPI_MOD,  XXXXXXX, KC_UP,   XXXXXXX,   S_D_MOD,             XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  SNP_TOG,  
     DPI_RMOD, KC_LEFT, KC_DOWN, KC_RGHT,   S_D_RMOD,            KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  SNIPING,
-    XXXXXXX,  XXXXXXX, KC_BTN1, KC_BTN1,   XXXXXXX,             KC_WH_D,  KC_BTN1,  KC_BTN3,  KC_BTN2,  KC_WH_U, 
+    XXXXXXX,  KC_BTN2, KC_BTN3, KC_BTN1,   XXXXXXX,             KC_WH_D,  KC_BTN1,  KC_BTN3,  KC_BTN2,  KC_WH_U, 
                        _______, KC_BTN1,   KC_BTN2,             KC_BTN4,  KC_BTN5        
   ),
 
@@ -99,6 +99,15 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
     }
     return false;
 }
+
+#ifdef USB_VBUS_PIN
+bool usb_vbus_state(void) {
+    setPinInputLow(USB_VBUS_PIN);
+    wait_us(5);
+    return readPin(USB_VBUS_PIN);
+}
+#endif
+
 
 #define rot8(x,k) (((x) << (k))|((x) >> (8 - (k))))
 uint8_t jsf8(void) {

@@ -31,7 +31,7 @@
 /* serial.c configuration (for split keyboard). */
 #define SERIAL_PIO_USE_PIO1
 #define SERIAL_USART_TX_PIN GP29
-#define SERIAL_USART_SPEED 460800 // gotta go fast
+#define SERIAL_USART_SPEED 230400
 
 /* RGB settings. */
 #define RGB_DI_PIN GP0
@@ -44,6 +44,7 @@
 #define PMW33XX_CS_PIN GP2
 #undef ROTATIONAL_TRANSFORM_ANGLE
 #define POINTING_DEVICE_INVERT_Y
+#define PMW33XX_LIFTOFF_DISTANCE 0x01
 
 /* I2C EEPROM settings. */
 #define I2C_DRIVER I2CD1
