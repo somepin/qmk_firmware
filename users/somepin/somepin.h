@@ -6,29 +6,29 @@
 enum userspace_layers {
     _BASE = 0,
     _QWERTY,
+    _NUMPD,
     _GAMING,
     _MOUSE,
     _NAV,
     _NAV_NUM,
-    _NUMPD,
     _LOWER,
     _RAISE,
     _FN,
     _ADJUST,
 };
 
-enum userspace_keycodes {
+// enum userspace_keycodes {
 // #ifndef NO_CHARYBDIS_KEYCODES
 //     SMASH = CHARYBDIS_SAFE_RANGE,
 // #else
-    SMASH = SAFE_RANGE,
+    // SMASH = SAFE_RANGE,
 // #endif // !NO_CHARYBDIS_KEYCODES
     // Oneshot mods
-    OS_ALT,
-    OS_CTRL,
-    OS_GUI,
-    OS_SHFT,
-};
+//     OS_ALT,
+//     OS_CTRL,
+//     OS_GUI,
+//     OS_SHFT,
+// };
 
 void          matrix_init_keymap(void);
 void          suspend_power_down_keymap(void);
