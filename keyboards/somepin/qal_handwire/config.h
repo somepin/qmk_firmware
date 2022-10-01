@@ -32,12 +32,13 @@
 // #define MATRIX_COL_PINS { A1, A2, A3, A4, A5, A6, A7, A8, A10, B7 }
 #define MATRIX_COL_PINS { B7, A10, A8, A7, A6, A5, A4, A3, A2, A1 }
 #define MATRIX_ROW_PINS { B6, B5, B4, B3 }
-#define UNUSED_PINS
 
 /* Set 0 if debouncing isn't needed */
 #define DEBOUNCE    5
 
 #define TAPPING_TERM 200
+
+#define USB_SUSPEND_WAKEUP_DELAY 200
 
 #define RGB_DI_PIN B9
 
