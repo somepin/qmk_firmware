@@ -91,7 +91,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                 XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, VERSION,
      _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
             RGB_SAD, RGB_SAI, RGB_HUD, RGB_HUI, RGB_SPD, RGB_SPI, RGB_VAD, RGB_VAI,
-          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_RMOD, RGB_MOD, EEP_RST, RGB_TOG
+          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_RMOD, RGB_MOD, EE_CLR, RGB_TOG
     )
 };
 
@@ -141,7 +141,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 #ifdef RGB_MATRIX_ENABLE
-void rgb_matrix_indicators_user(void) {
+bool rgb_matrix_indicators_user(void) {
     if (rgb_matrix_is_enabled()) {  // turn the lights on when it is enabled.
         uint8_t layer = get_highest_layer(layer_state);
         switch (layer) {
@@ -170,12 +170,13 @@ void rgb_matrix_indicators_user(void) {
 
                 rgb_matrix_set_color(31, RGB_DARKBLUE);        //  RGB_RMOD
                 rgb_matrix_set_color(37, RGB_DARKBLUE);        //  RGB_MOD
-                rgb_matrix_set_color(38, RGB_DARKPINK);        //  EEP_RST
+                rgb_matrix_set_color(38, RGB_DARKPINK);        //  EE_CLR
                 rgb_matrix_set_color(40, RGB_DARKRED);         //  RGB_TOG
 
                 rgb_matrix_set_color(41, RGB_DARKORANGE);      //  _FN
                 break;
         }
     }
+    return false;
 }
 #endif

@@ -225,7 +225,7 @@ bool process_record_quantum(keyrecord_t *record) {
     uint16_t keycode = get_record_keycode(record, true);
 
     // This is how you use actions here
-    // if (keycode == KC_LEAD) {
+    // if (keycode == QK_LEADER) {
     //   action_t action;
     //   action.code = ACTION_DEFAULT_LAYER_SET(0);
     //   process_action(record, action);
@@ -251,7 +251,11 @@ bool process_record_quantum(keyrecord_t *record) {
 #endif
 
 #ifdef TAP_DANCE_ENABLE
-    preprocess_tap_dance(keycode, record);
+    if (preprocess_tap_dance(keycode, record)) {
+        // The tap dance might have updated the layer state, therefore the
+        // result of the keycode lookup might change.
+        keycode = get_record_keycode(record, true);
+    }
 #endif
 
     if (!(
@@ -418,7 +422,11 @@ bool process_record_quantum(keyrecord_t *record) {
                 } else {
                     SEND_STRING_DELAY(" compile ", TAP_CODE_DELAY);
                 }
+#    if defined(CONVERTER_ENABLED)
+                SEND_STRING_DELAY("-kb " QMK_KEYBOARD " -km " QMK_KEYMAP " -e CONVERT_TO=" CONVERTER_TARGET SS_TAP(X_ENTER), TAP_CODE_DELAY);
+#    else
                 SEND_STRING_DELAY("-kb " QMK_KEYBOARD " -km " QMK_KEYMAP SS_TAP(X_ENTER), TAP_CODE_DELAY);
+#    endif
                 if (temp_mod & MOD_MASK_SHIFT && temp_mod & MOD_MASK_CTRL) {
                     reset_keyboard();
                 }

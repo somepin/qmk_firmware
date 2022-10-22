@@ -87,7 +87,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             _______,          XXXXXXX,
             MI_VELU,
         MI_OCTD, MI_OCTU,     B_BASE, DF(_RESERVE), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, VERSION, XXXXXXX, XXXXXXX,
-            MI_VELD,              TGLINTR,    TGLTRNS, XXXXXXX, XXXXXXX, XXXXXXX, RGB_SAD, RGB_SAI, RGB_HUD, RGB_HUI, RGB_SPD, RGB_SPI, RGB_VAD, RGB_VAI, RGB_RMOD, RGB_MOD, EEP_RST, TGLINDI, RGB_TOG
+            MI_VELD,              TGLINTR,    TGLTRNS, XXXXXXX, XXXXXXX, XXXXXXX, RGB_SAD, RGB_SAI, RGB_HUD, RGB_HUI, RGB_SPD, RGB_SPI, RGB_VAD, RGB_VAI, RGB_RMOD, RGB_MOD, EE_CLR, TGLINDI, RGB_TOG
     )
 };
 
@@ -245,7 +245,7 @@ void set_led_scale_indicator(uint8_t r, uint8_t g, uint8_t b) {
     }
 }
 
-void rgb_matrix_indicators_user(void) {
+bool rgb_matrix_indicators_user(void) {
     // uint32_t mode = rgblight_get_mode();
 
     if (rgb_matrix_is_enabled()) {  // turn the lights on when it is enabled.
@@ -280,5 +280,6 @@ void rgb_matrix_indicators_user(void) {
                 break;
         }
     }
+    return false;
 }
 #endif  // RGB_MATRIX_ENABLE
