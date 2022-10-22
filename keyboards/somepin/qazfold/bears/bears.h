@@ -1,0 +1,32 @@
+enum layers {
+  _BASE,
+  _NUM_SYM,
+  _NAV,
+  _COL,
+  _CUS
+};
+
+enum custom_keycodes {
+  BASE = SAFE_RANGE,
+  DOMATH,
+  CUT,
+  COPY,
+  PASTE,
+  COPYDOWN, 
+  CUTWORD,
+  COPYWORD,
+  CUTLINE,
+  COPYLINE,
+  LOCK_SHIFT,
+  LINEDOWN,
+  MATHFRAC,
+  MATHENVCENTER,
+  CHAR_JUMP,
+  JUMP_CHAR,
+  JUMP_WORD,
+  JUMP_AGAIN,
+  POP,
+  PUSH,
+  PUSH_KILL,
+  DUP,
+};
