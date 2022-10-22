@@ -134,6 +134,6 @@ layer_state_t                       layer_state_set_user(layer_state_t state) {
           break;
     }
 #endif
-    // return state;
-    return layer_state_set_keymap(state);
+    return state;
+    // return layer_state_set_keymap(state);
 }

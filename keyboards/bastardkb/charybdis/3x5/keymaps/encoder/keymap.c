@@ -10,9 +10,9 @@ enum layer_names {
     _ADJUST
 };
 
-enum my_keycodes {
-  SMASH = CHARYBDIS_SAFE_RANGE,
-};
+// enum my_keycodes {
+//   SMASH = CHARYBDIS_SAFE_RANGE,
+// };
 
 #define NV_COMM LT(_NAV, KC_COMM)
 
@@ -68,7 +68,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_ADJUST] = LAYOUT_charybdis_3x5(
     RGB_HUI, RGB_SAI, RGB_VAI, RGB_MOD,   RGB_TOG,             HPT_FBK,  HPT_TOG,      KC_VOLU,  KC_MNXT,  HPT_DWLI,  
     RGB_HUD, RGB_SAD, RGB_VAD, RGB_RMOD,  RGB_M_P,             HPT_RST,  TG(_GAMING),  KC_VOLD,  KC_MPRV,  HPT_DWLD,
-    RGB_SPD, RGB_SPI, KC_LCBR, KC_RCBR,   SMASH,               QK_BOOT,  MO(_NAV),     KC_MUTE,  KC_MPLY,  HPT_BUZ,  
+    RGB_SPD, RGB_SPI, KC_LCBR, KC_RCBR,   XXXXXXX,               QK_BOOT,  MO(_NAV),     KC_MUTE,  KC_MPLY,  HPT_BUZ,  
                       _______, _______,   _______,             _______,  _______        
   ),
 };
@@ -109,91 +109,91 @@ bool usb_vbus_state(void) {
 #endif
 
 
-#define rot8(x,k) (((x) << (k))|((x) >> (8 - (k))))
-uint8_t jsf8(void) {
-    static uint8_t a = 0xf1;
-    static uint8_t b = 0xee, c = 0xee, d = 0xee;
+// #define rot8(x,k) (((x) << (k))|((x) >> (8 - (k))))
+// uint8_t jsf8(void) {
+//     static uint8_t a = 0xf1;
+//     static uint8_t b = 0xee, c = 0xee, d = 0xee;
 
-    uint8_t e = a - rot8(b, 1);
-    a = b ^ rot8(c, 4);
-    b = c + d;
-    c = d + e;
-    return d = e + a;
-}
+//     uint8_t e = a - rot8(b, 1);
+//     a = b ^ rot8(c, 4);
+//     b = c + d;
+//     c = d + e;
+//     return d = e + a;
+// }
 
-void tap_random_base10(void) {
-#if defined(__AVR_ATmega32U4__)
-    uint8_t key = (TCNT0 + TCNT1 + TCNT3 + TCNT4) % 10;
-#else
-    uint8_t key = jsf8() % 10;
-#endif
-    switch (key) {
-        case 0:
-            send_char('a');
-            break;
-        case 1:
-            send_char('s');
-            break;
-        case 2:
-            send_char('d');
-            break;
-        case 3:
-            send_char('f');
-            break;
-        case 4:
-            send_char('g');
-            break;
-        case 5:
-            send_char('h');
-            break;
-		case 6:
-            send_char('j');
-            break;
-		case 7:
-            send_char('k');
-            break;
-	    case 8:
-            send_char('l');
-            break;
-	    case 9:
-            send_char(';');
-            break;
-    }
-}
+// void tap_random_base10(void) {
+// #if defined(__AVR_ATmega32U4__)
+//     uint8_t key = (TCNT0 + TCNT1 + TCNT3 + TCNT4) % 10;
+// #else
+//     uint8_t key = jsf8() % 10;
+// #endif
+//     switch (key) {
+//         case 0:
+//             send_char('a');
+//             break;
+//         case 1:
+//             send_char('s');
+//             break;
+//         case 2:
+//             send_char('d');
+//             break;
+//         case 3:
+//             send_char('f');
+//             break;
+//         case 4:
+//             send_char('g');
+//             break;
+//         case 5:
+//             send_char('h');
+//             break;
+// 		case 6:
+//             send_char('j');
+//             break;
+// 		case 7:
+//             send_char('k');
+//             break;
+// 	    case 8:
+//             send_char('l');
+//             break;
+// 	    case 9:
+//             send_char(';');
+//             break;
+//     }
+// }
 
-bool keysmash_mode = false;
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (keysmash_mode) {
-        switch(keycode) {
-            case KC_A ... KC_Z:
-            case KC_SCLN:
-            case KC_QUOT:
-            case KC_COMM:
-            case KC_DOT:
-            case KC_SLSH:
-            case HM_A:
-            case HM_R:
-            case HM_S:
-            case HM_T:
-            case HM_N:
-            case HM_E:
-            case HM_I:
-            case HM_O:
-                if (record->event.pressed) {
-                    tap_random_base10();
-                    return false;
-                    break;
-                }
-        }
-    }
-    switch(keycode) {
-        case SMASH:
-            if (record->event.pressed) {
-                keysmash_mode ^= 1;
-            }
-        return false; 
-        break;
-        default:
-            return true; 
-    }
-}
+// bool keysmash_mode = false;
+// bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+//     if (keysmash_mode) {
+//         switch(keycode) {
+//             case KC_A ... KC_Z:
+//             case KC_SCLN:
+//             case KC_QUOT:
+//             case KC_COMM:
+//             case KC_DOT:
+//             case KC_SLSH:
+//             case HM_A:
+//             case HM_R:
+//             case HM_S:
+//             case HM_T:
+//             case HM_N:
+//             case HM_E:
+//             case HM_I:
+//             case HM_O:
+//                 if (record->event.pressed) {
+//                     tap_random_base10();
+//                     return false;
+//                     break;
+//                 }
+//         }
+//     }
+//     switch(keycode) {
+//         case SMASH:
+//             if (record->event.pressed) {
+//                 keysmash_mode ^= 1;
+//             }
+//         return false; 
+//         break;
+//         default:
+//             return true; 
+//     }
+// }
