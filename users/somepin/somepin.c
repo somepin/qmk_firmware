@@ -128,9 +128,11 @@ layer_state_t                       layer_state_set_user(layer_state_t state) {
     switch(get_highest_layer(state | default_layer_state)) {
         case _GAMING:
           combo_disable();
+          autoshift_disable();
           break;
         default:
           combo_enable();
+          autoshift_enable();
           break;
     }
 #endif

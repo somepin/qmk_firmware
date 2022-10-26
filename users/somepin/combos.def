@@ -14,6 +14,10 @@
 #include "combos/gherkin.def"
 #endif
 
+#if defined(COMBO_DICT_ISOTERIC)
+#include "combos/isoteric.def"
+#endif
+
 // shared combos
 #if defined(MOUSEKEY_ENABLE)
 COMB(btn123,     KC_BTN3,         KC_BTN1, KC_BTN2)
