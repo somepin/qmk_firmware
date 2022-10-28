@@ -1,6 +1,5 @@
 #include "colemak-dh.def"
 
-COMB(yoQuot,         KC_QUOT,       KC_Y, KC_O)
+COMB(yoQuot,         KC_QUOT,       KC_Y, HM_OC)
 COMB(scln90,         KC_SCLN,       KC_9, KC_0)
-COMB(axZ,            KC_Z,          KC_A, KC_X)
-COMB(eqlLbrcMins,    KC_MINS,       KC_EQL, KC_LBRC)
+COMB(axZ,            KC_Z,          HM_AC, KC_X)

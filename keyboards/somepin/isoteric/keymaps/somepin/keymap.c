@@ -33,12 +33,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_LOWER] = LAYOUT_base_wrapper(
         _________________LOWER_L1__________________, KC_6,    KC_7,    KC_8,    KC_9,
-        _________________LOWER_L2__________________, ______________NAV_1_______________,  KC_0,
+        LGUI_T(KC_MINS), KC_LALT, KC_LCTL, KC_LSFT, KC_GRV, ______________NAV_1_______________,  KC_0,
         KC_EQL, KC_LBRC, KC_RBRC,  KC_BSLS, KC_HOME, KC_PGDN, KC_PGUP, KC_END
     ),
 
     [_RAISE] = LAYOUT_base_wrapper(
-        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX, XXXXXXX,     KC_F1,  KC_F2,  KC_F3,  
+        QK_BOOT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     KC_F1,  KC_F2,  KC_F3,  
         ______________MOD_LEFT____________, XXXXXXX, KC_F5,  KC_F6,  KC_F7,  KC_F8, KC_F4,
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_F9,       KC_F10, KC_F11, KC_F12
     )
