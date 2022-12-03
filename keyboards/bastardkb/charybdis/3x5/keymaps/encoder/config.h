@@ -25,6 +25,7 @@
 #ifdef HAPTIC_ENABLE
 #define SOLENOID_PIN GP27
 #define SOLENOID_DEFAULT_BUZZ 0
+// #define SPLIT_HAPTIC_ENABLE
 #endif
 
 /** Define encoder pads. 
@@ -43,10 +44,10 @@
 /** Override RGB settings. 
  * \brief 12 LEDs are added by the falcon PCB to the original 36
  */
-#undef RGBLED_NUM 
-#undef RGBLED_SPLIT
-#define RGBLED_NUM 48
-#define RGBLED_SPLIT \
+#undef RGB_MATRIX_LED_COUNT
+#undef RGB_MATRIX_SPLIT
+#define RGB_MATRIX_LED_COUNT 48
+#define RGB_MATRIX_SPLIT \
     { 30, 18 }
 
 // Enable all animations on KB2040 since they have plenty of memory
