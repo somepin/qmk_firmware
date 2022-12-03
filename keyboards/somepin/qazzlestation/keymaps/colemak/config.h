@@ -1,0 +1,1 @@
+#define NO_AUTO_SHIFT_ALPHA

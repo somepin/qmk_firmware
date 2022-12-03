@@ -1,0 +1,18 @@
+QUANTUM_PAINTER_ENABLE = yes
+QUANTUM_PAINTER_DRIVERS += st7735_spi
+BACKLIGHT_ENABLE = yes
+DIP_SWITCH_ENABLE = yes
+RGBLIGHT_ENABLE = yes
+WS2812_DRIVER = vendor
+ENCODER_ENABLE = yes
+HAPTIC_ENABLE = yes
+HAPTIC_DRIVER += SOLENOID
+AUDIO_ENABLE = yes
+AUDIO_DRIVER = pwm_hardware
+KEY_OVERRIDE_ENABLE = yes 
+
+EEPROM_DRIVER = wear_leveling 
+WEAR_LEVELING_DRIVER = rp2040_flash
+
+VPATH += keyboards/somepin/qazzlestation/graphics
+SRC += qazfold-screen.qgf.c
