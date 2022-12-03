@@ -115,7 +115,9 @@
                     "minimum": 1,
                     "maximum": 31
                 },
+                "max_brightness": {"$ref": "qmk.definitions.v1#/unsigned_int_8"},
                 "pin": {"$ref": "qmk.definitions.v1#/mcu_pin"},
+                "pins": {"$ref": "qmk.definitions.v1#/mcu_pin_array"},
                 "on_state": {"$ref": "qmk.definitions.v1#/bit"}
             }
         },
@@ -126,6 +128,22 @@
                 "driver": {
                     "type": "string",
                     "enum": ["BluefruitLE", "RN42"]
+                }
+            }
+        },
+        "bootmagic":{
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "enabled": {"type": "boolean"},
+                "matrix": {
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 2,
+                    "items": {
+                        "type": "integer",
+                        "minimum": 0
+                    }
                 }
             }
         },
@@ -508,6 +526,21 @@
             "additionalProperties": false,
             "properties": {
                 "enabled": {"type": "boolean"},
+                "bootmagic":{
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "matrix": {
+                            "type": "array",
+                            "minItems": 2,
+                            "maxItems": 2,
+                            "items": {
+                                "type": "integer",
+                                "minimum": 0
+                            }
+                        }
+                    }
+                },
                 "matrix_grid": {
                     "type": "array",
                     "items": {"$ref": "qmk.definitions.v1#/mcu_pin"}
@@ -601,7 +634,10 @@
             "type": "object",
             "additionalProperties": false,
             "properties": {
-                "device_ver": {"$ref": "qmk.definitions.v1#/hex_number_4d"}, # Deprecated
+                "device_ver": {
+                    "$ref": "qmk.definitions.v1#/hex_number_4d",
+                    "$comment": "Deprecated: use device_version instead"
+                },
                 "device_version": {"$ref": "qmk.definitions.v1#/bcd_version"},
                 "force_nkro": {"type": "boolean"},
                 "pid": {"$ref": "qmk.definitions.v1#/hex_number_4d"},

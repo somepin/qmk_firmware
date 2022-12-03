@@ -1,4 +1,4 @@
-/* Copyright 2019
+/* Copyright 2021 QMK
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,3 +25,7 @@
 #define ADC_PIN A0
 
 #define RGB_CI_PIN A2
+
+#define SOLENOID_PIN B12
+#define SOLENOID_PINS { B12, B13, B14, B15 }
+#define SOLENOID_PINS_ACTIVE_STATE { high, high, low }

@@ -226,19 +226,23 @@ typedef struct {
 #ifdef DIGITIZER_SHARED_EP
     uint8_t report_id;
 #endif
-    uint8_t  tip : 1;
-    uint8_t  inrange : 1;
-    uint8_t  pad2 : 6;
+    bool     in_range : 1;
+    bool     tip : 1;
+    bool     barrel : 1;
+    uint8_t  reserved : 5;
     uint16_t x;
     uint16_t y;
 } __attribute__((packed)) report_digitizer_t;
 
 typedef struct {
-#if JOYSTICK_AXES_COUNT > 0
-#    if JOYSTICK_AXES_RESOLUTION > 8
-    int16_t axes[JOYSTICK_AXES_COUNT];
+#ifdef JOYSTICK_SHARED_EP
+    uint8_t report_id;
+#endif
+#if JOYSTICK_AXIS_COUNT > 0
+#    if JOYSTICK_AXIS_RESOLUTION > 8
+    int16_t axes[JOYSTICK_AXIS_COUNT];
 #    else
-    int8_t axes[JOYSTICK_AXES_COUNT];
+    int8_t axes[JOYSTICK_AXIS_COUNT];
 #    endif
 #endif
 
