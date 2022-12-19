@@ -17,33 +17,36 @@
 #pragma once
 
 /* USB Device descriptor parameter */
-#define VENDOR_ID       0xBEEF
-#define PRODUCT_ID      0x6969
-#define DEVICE_VER      0x0001
-#define MANUFACTURER    somepin
-#define PRODUCT         qal
+// #define VENDOR_ID       0x7370
+// #define PRODUCT_ID      0x6969
+// #define DEVICE_VER      0x0001
+// #define MANUFACTURER    somepin
+// #define PRODUCT         qal
 
-/* key matrix size */
-#define MATRIX_ROWS 4
-#define MATRIX_COLS 10
+// /* key matrix size */
+// #define MATRIX_ROWS 4
+// #define MATRIX_COLS 10
 
-#define DIODE_DIRECTION COL2ROW
+// #define DIODE_DIRECTION COL2ROW
 
-// #define MATRIX_COL_PINS { A1, A2, A3, A4, A5, A6, A7, A8, A10, B7 }
-#define MATRIX_COL_PINS { B7, A10, A8, A7, A6, A5, A4, A3, A2, A1 }
-#define MATRIX_ROW_PINS { B6, B5, B4, B3 }
+// // #define MATRIX_COL_PINS { A1, A2, A3, A4, A5, A6, A7, A8, A10, B7 }
+// #define MATRIX_COL_PINS { B7, A10, A8, A7, A6, A5, A4, A3, A2, A1 }
+// #define MATRIX_ROW_PINS { B6, B5, B4, B3 }
+
+// #define STM32_BOOTLOADER_ADDRESS 0x1FFF0000
 
 /* Set 0 if debouncing isn't needed */
-#define DEBOUNCE    5
+// #define DEBOUNCE    5
 
-#define TAPPING_TERM 200
+// #define TAPPING_TERM 200
 
-#define USB_SUSPEND_WAKEUP_DELAY 200
+// #define USB_SUSPEND_WAKEUP_DELAY 200
 
-#define RGB_DI_PIN B9
+// #define RGB_DI_PIN B9
 
 #ifdef RGB_MATRIX_ENABLE
-#define DRIVER_LED_TOTAL 24
+#define RGB_MATRIX_LED_COUNT 24
+#define RGB_DISABLE_WHEN_USB_SUSPENDED 
 // #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 200
 #    define ENABLE_RGB_MATRIX_GRADIENT_UP_DOWN
 #    define ENABLE_RGB_MATRIX_GRADIENT_LEFT_RIGHT
@@ -74,21 +77,3 @@
 #    define ENABLE_RGB_MATRIX_PIXEL_FLOW
 #    define ENABLE_RGB_MATRIX_PIXEL_FRACTAL
 #endif
-
-#ifdef RGBLIGHT_ENABLE
-#define RGBLED_NUM 24
-// #define RGBLIGHT_LIMIT_VAL 128
-#define RGBLIGHT_SLEEP
-/* Enable RGB animations */
-#define RGBLIGHT_EFFECT_BREATHING
-#define RGBLIGHT_EFFECT_KNIGHT
-#define RGBLIGHT_EFFECT_SNAKE
-#define RGBLIGHT_EFFECT_STATIC_GRADIENT
-#define RGBLIGHT_EFFECT_RAINBOW_MOOD
-#define RGBLIGHT_EFFECT_RAINBOW_SWIRL
-#endif
-
-/* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
-#define LOCKING_SUPPORT_ENABLE
-/* Locking resynchronize hack */
-#define LOCKING_RESYNC_ENABLE
