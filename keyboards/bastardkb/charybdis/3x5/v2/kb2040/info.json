@@ -1,6 +1,10 @@
 {
     "keyboard_name": "Charybdis Nano (3x5) KB2040",
+    "processor": "RP2040",
+    "bootloader": "rp2040",
+    "board": "QMK_PM2040",
+    "pin_compatible": "promicro",
     "usb": {
-      "device_version": "1.0.0"
+        "device_version": "1.0.0"
     }
 }

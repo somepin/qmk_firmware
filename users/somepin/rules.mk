@@ -6,12 +6,12 @@ SRC += somepin.c
 #     endif
 # endif
 
-ifeq ($(strip $(KEYBOARD)), somepin/qal)
-COMBO_ENABLE = yes
-RGB_MATRIX_ENABLE = yes
-RGB_MATRIX_DRIVER = WS2812
-CONSOLE_ENABLE = no
-endif
+# ifeq ($(strip $(KEYBOARD)), somepin/qal)
+# COMBO_ENABLE = yes
+# RGB_MATRIX_ENABLE = yes
+# RGB_MATRIX_DRIVER = WS2812
+# CONSOLE_ENABLE = no
+# endif
 
 ifeq ($(strip $(KEYBOARD)), reviung41)
 COMBO_ENABLE = yes
