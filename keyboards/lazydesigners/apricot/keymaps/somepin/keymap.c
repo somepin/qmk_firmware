@@ -22,7 +22,7 @@ const uint8_t RGBLED_SNAKE_INTERVALS[] PROGMEM = {250, 200, 150};
       K01,    K02,    K03,    K04,    K05,    K06,    K07,    K08,    K09,    K0A,  \
       K11,    K12,    K13,    K14,    K15,    K16,    K17,    K18,    K19,    K1A,  \
       K21,    K22,    K23,    K24,    K25,    K26,    K27,    K28,    KC_NO,  K2A,  \
-      KC_LCTL, KC_NO, LGUI_T(KC_ESC), KC_NO, LT(_LOWER, KC_SPC), RALT_T(KC_ENT), KC_NO, RCTL_T(KC_SLSH)  \
+      KC_LCTL, KC_NO, LGUI_T(KC_ESC), LT(_LOWER, KC_SPC), KC_NO, RALT_T(KC_ENT), KC_NO, RCTL_T(KC_SLSH)  \
   )
 #define LAYOUT_base_wrapper(...)       LAYOUT_apricot_base(__VA_ARGS__)
 
