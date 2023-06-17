@@ -1,1 +1,1 @@
-DEFAULT_FOLDER = jacky_studio/piggy60/solder
+DEFAULT_FOLDER = jacky_studio/piggy60/rev1/solder
